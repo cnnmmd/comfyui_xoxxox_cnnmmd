@@ -1,5 +1,4 @@
 import { app } from '../../../scripts/app.js';
-import { api } from '../../../scripts/api.js';
 import { UrlLib, UrlAud } from './lib/params_tlk.js';
 
 (
@@ -11,7 +10,7 @@ import { UrlLib, UrlAud } from './lib/params_tlk.js';
 
 app.registerExtension({
   name: 'Xoxxox_SndvVce',
-  async setup() {
+  async setup({ api }) {
 
     api.addEventListener('xoxxox_sndvce', async ({detail}) => {      
       console.log('sts: load xoxxox_sndvce'); // DBG
@@ -27,7 +26,7 @@ app.registerExtension({
 
 app.registerExtension({
   name: 'Xoxxox_RcvVce',
-  async setup() {
+  async setup({ api }) {
 
     api.addEventListener('xoxxox_rcvvce', async ({detail}) => {
       console.log('sts: load xoxxox_rcvvce'); // DBG
@@ -42,7 +41,7 @@ app.registerExtension({
 
 app.registerExtension({
   name: 'Xoxxox_SwtImg',
-  async setup() {
+  async setup({ api }) {
 
     api.addEventListener('xoxxox_swtimg', async ({detail}) => {
       console.log('sts: load xoxxox_swtimg'); // DBG

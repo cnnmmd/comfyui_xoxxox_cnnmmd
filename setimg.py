@@ -1,5 +1,6 @@
 #---------------------------------------------------------------------------
 
+import asyncio
 from .lib.midclt import MidClt
 from .lib.shared import PrcCmf
 from .lib.params_cmf import PrmCmf
@@ -13,7 +14,7 @@ async def getdic():
   global dicsrv, diccnf
   dicsrv = await PrcCmf.getsrv()
   diccnf = await PrcCmf.getcnf()
-getdic()
+asyncio.run(getdic())
 
 #---------------------------------------------------------------------------
 # 画像を生成

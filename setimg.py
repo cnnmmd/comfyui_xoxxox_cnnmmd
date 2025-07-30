@@ -14,7 +14,7 @@ async def getdic():
   global dicsrv, diccnf
   dicsrv = await PrcCmf.getsrv()
   diccnf = await PrcCmf.getcnf()
-asyncio.run(getdic())
+await getdic()
 
 #---------------------------------------------------------------------------
 # 画像を生成

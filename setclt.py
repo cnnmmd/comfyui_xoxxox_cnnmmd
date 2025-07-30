@@ -1,10 +1,22 @@
+#---------------------------------------------------------------------------
+
+import asyncio
+import threading
 from server import PromptServer
 from .lib.shared import PrcCmf
 from .lib.params_tlk import PrmVce, PrmSwt
 
 #---------------------------------------------------------------------------
 
-dicsrv = PrcCmf.getsrv()
+dicsrv = {}
+async def getdic():
+  return await PrcCmf.getsrv()
+def worker():
+  global dicsrv
+  dicsrv = asyncio.run(getdic())
+t = threading.Thread(target=worker)
+t.start()
+t.join()
 
 #---------------------------------------------------------------------------
 # サウンドを送信（フロントエンド（ウェブブラウザ）から）

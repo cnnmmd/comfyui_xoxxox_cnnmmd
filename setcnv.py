@@ -7,10 +7,11 @@ from .lib.params_cmf import PrmCmf
 #---------------------------------------------------------------------------
 
 adrmid = PrmCmf.adrmid
+diccnf = {}
 async def getdic():
+  global diccnf
   diccnf = await PrcCmf.getcnf()
-  return (diccnf)
-diccnf = getdic()
+getdic()
 
 #---------------------------------------------------------------------------
 # データを変換

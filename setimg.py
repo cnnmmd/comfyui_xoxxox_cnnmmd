@@ -7,8 +7,11 @@ from .lib.params_cmf import PrmCmf
 #---------------------------------------------------------------------------
 
 adrmid = PrmCmf.adrmid
-dicsrv = PrcCmf.getsrv()
-diccnf = PrcCmf.getcmf()
+async def getdic():
+  dicsrv = await PrcCmf.getsrv()
+  diccnf = await PrcCmf.getcnf()
+  return (dicsrv, diccnf)
+dicsrv, diccnf = getdic()
 
 #---------------------------------------------------------------------------
 # 画像を生成

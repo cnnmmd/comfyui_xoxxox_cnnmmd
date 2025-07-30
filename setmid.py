@@ -1,14 +1,16 @@
 #---------------------------------------------------------------------------
 
+import io
+from PIL import Image
+import torch
+import torchaudio
+from .lib.shared import CnvImg
 from .lib.midclt import MidClt
-from .lib.shared import PrcCmf
 from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
 adrmid = PrmCmf.adrmid
-dicsrv = PrcCmf.getsrv()
-diccnf = PrcCmf.getcmf()
 
 #---------------------------------------------------------------------------
 # 初期

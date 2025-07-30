@@ -14,20 +14,20 @@ from .params_cmf import PrmCmf
 class PrcCmf:
 
   @staticmethod
-  def getsrv():
+  async def getsrv():
     adrmid = PrmCmf.adrmid
     datreq = {"keyprc": "xoxxox.AppCmf.dicsrv"}
-    datres = asyncio.run(MidClt.reqprc(datreq, adrmid + MidClt.adrprc))
-    datres = asyncio.run(MidClt.reqget({"keydat": datres["keydat"]}, adrmid + MidClt.adrget))
+    datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
+    datres = await MidClt.reqget({"keydat": datres["keydat"]}, adrmid + MidClt.adrget)
     dicsrv = json.loads(datres.decode("utf-8"))
     return dicsrv
 
   @staticmethod
-  def getcmf():
+  async def getcmf():
     adrmid = PrmCmf.adrmid
     datreq = {"keyprc": "xoxxox.AppCmf.diccmf"}
-    datres = asyncio.run(MidClt.reqprc(datreq, adrmid + MidClt.adrprc))
-    datres = asyncio.run(MidClt.reqget({"keydat": datres["keydat"]}, adrmid + MidClt.adrget))
+    datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
+    datres = await MidClt.reqget({"keydat": datres["keydat"]}, adrmid + MidClt.adrget)
     diccmf = json.loads(datres.decode("utf-8"))
     return diccmf
 

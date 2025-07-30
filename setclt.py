@@ -4,7 +4,10 @@ from .lib.params_tlk import PrmVce, PrmSwt
 
 #---------------------------------------------------------------------------
 
-dicsrv = PrcCmf.getsrv()
+async def getdic():
+  dicsrv = await PrcCmf.getsrv()
+  return (dicsrv)
+dicsrv = getdic()
 
 #---------------------------------------------------------------------------
 # サウンドを送信（フロントエンド（ウェブブラウザ）から）

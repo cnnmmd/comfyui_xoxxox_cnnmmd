@@ -1,14 +1,11 @@
 #---------------------------------------------------------------------------
 
 from .lib.midclt import MidClt
-from .lib.shared import PrcCmf
 from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
 adrmid = PrmCmf.adrmid
-dicsrv = PrcCmf.getsrv()
-diccnf = PrcCmf.getcmf()
 
 #---------------------------------------------------------------------------
 # メモリに格納

@@ -14,7 +14,7 @@ diccnf = {}
 async def getdic():
   global dicsrv, diccnf
   dicsrv = await PrcCmf.getsrv()
-  diccnf = await PrcCmf.getcnf()
+  diccnf = await PrcCmf.getcmf()
 def runtrd():
   asyncio.run(getdic())
 t = threading.Thread(target=runtrd)

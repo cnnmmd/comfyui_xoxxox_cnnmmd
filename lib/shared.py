@@ -26,9 +26,11 @@ class PrcCmf:
     t.join()
     return cls.dicsrv
 
+  @classmethod
   def wrksrv(cls):
     cls.dicsrv = asyncio.run(cls.asysrv())
 
+  @classmethod
   async def asysrv(cls):
     adrmid = PrmCmf.adrmid
     datreq = {"keyprc": "xoxxox.AppCmf.dicsrv"}
@@ -46,9 +48,11 @@ class PrcCmf:
     t.join()
     return cls.diccmf
 
+  @classmethod
   def wrkcmf(cls):
     cls.diccmf = asyncio.run(cls.asycmf())
 
+  @classmethod
   async def asycmf(cls):
     adrmid = PrmCmf.adrmid
     datreq = {"keyprc": "xoxxox.AppCmf.diccmf"}

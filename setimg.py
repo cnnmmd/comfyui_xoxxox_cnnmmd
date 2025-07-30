@@ -12,12 +12,11 @@ adrmid = PrmCmf.adrmid
 dicsrv = {}
 diccnf = {}
 async def getdic():
+  return await PrcCmf.getsrv(), await PrcCmf.getcmf()
+def worker():
   global dicsrv, diccnf
-  dicsrv = await PrcCmf.getsrv()
-  diccnf = await PrcCmf.getcmf()
-def runtrd():
-  asyncio.run(getdic())
-t = threading.Thread(target=runtrd)
+  dicsrv, diccnf = asyncio.run(getdic())
+t = threading.Thread(target=worker)
 t.start()
 t.join()
 

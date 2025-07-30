@@ -1,6 +1,7 @@
 #---------------------------------------------------------------------------
 
 import asyncio
+import threading
 from .lib.midclt import MidClt
 from .lib.shared import PrcCmf
 from .lib.params_cmf import PrmCmf
@@ -14,8 +15,11 @@ async def getdic():
   global dicsrv, diccnf
   dicsrv = await PrcCmf.getsrv()
   diccnf = await PrcCmf.getcnf()
-r = asyncio.get_event_loop()
-r.run_until_complete(getdic())
+def runtrd():
+  asyncio.run(getdic())
+t = threading.Thread(target=runtrd)
+t.start()
+t.join()
 
 #---------------------------------------------------------------------------
 # 画像を生成

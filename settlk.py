@@ -1,5 +1,7 @@
 #---------------------------------------------------------------------------
 
+import asyncio
+import threading
 from .lib.midclt import MidClt
 from .lib.shared import PrcCmf
 from .lib.params_cmf import PrmCmf
@@ -10,10 +12,13 @@ adrmid = PrmCmf.adrmid
 dicsrv = {}
 diccnf = {}
 async def getdic():
+  return await PrcCmf.getsrv(), await PrcCmf.getcmf()
+def worker():
   global dicsrv, diccnf
-  dicsrv = await PrcCmf.getsrv()
-  diccnf = await PrcCmf.getcnf()
-getdic()
+  dicsrv, diccnf = asyncio.run(getdic())
+t = threading.Thread(target=worker)
+t.start()
+t.join()
 
 #---------------------------------------------------------------------------
 # サウンドからテキストに変換（ＳＴＴ）

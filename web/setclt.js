@@ -2,16 +2,13 @@ import { app } from '../../../scripts/app.js';
 import { api } from '../../../scripts/api.js';
 import { UrlLib, UrlAud } from './lib/params_tlk.js';
 
-(
-  async () => {
-    const { SndVce, RcvVce, SwtImg } = await import(UrlLib);
-
 //--------------------------------------------------------------------------
 // 音声送信
 
 app.registerExtension({
   name: 'Xoxxox_SndvVce',
   async setup() {
+    const { SndVce } = await import(UrlLib);
 
     api.addEventListener('xoxxox_sndvce', async ({detail}) => {      
       console.log('sts: load xoxxox_sndvce'); // DBG
@@ -28,6 +25,7 @@ app.registerExtension({
 app.registerExtension({
   name: 'Xoxxox_RcvVce',
   async setup() {
+    const { RcvVce } = await import(UrlLib);
 
     api.addEventListener('xoxxox_rcvvce', async ({detail}) => {
       console.log('sts: load xoxxox_rcvvce'); // DBG
@@ -43,6 +41,7 @@ app.registerExtension({
 app.registerExtension({
   name: 'Xoxxox_SwtImg',
   async setup() {
+    const { SwtImg } = await import(UrlLib);
 
     api.addEventListener('xoxxox_swtimg', async ({detail}) => {
       console.log('sts: load xoxxox_swtimg'); // DBG
@@ -52,8 +51,3 @@ app.registerExtension({
     })
   }
 });
-
-//--------------------------------------------------------------------------
-
-}
-)();

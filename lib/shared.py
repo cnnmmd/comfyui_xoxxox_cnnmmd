@@ -4,6 +4,7 @@ import json
 import numpy as np
 from PIL import Image
 import asyncio
+import threading
 import torch
 from .midclt import MidClt
 from .params_cmf import PrmCmf
@@ -13,8 +14,22 @@ from .params_cmf import PrmCmf
 
 class PrcCmf:
 
-  @staticmethod
-  async def getsrv():
+  dicsrv = {}
+  diccmf = {}
+
+  # getsrv()
+
+  @classmethod
+  def getsrv(cls):
+    t = threading.Thread(target=cls.wrksrv)
+    t.start()
+    t.join()
+    return cls.dicsrv
+
+  def wrksrv(cls):
+    cls.dicsrv = asyncio.run(cls.asysrv())
+
+  async def asysrv(cls):
     adrmid = PrmCmf.adrmid
     datreq = {"keyprc": "xoxxox.AppCmf.dicsrv"}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
@@ -22,8 +37,19 @@ class PrcCmf:
     dicsrv = json.loads(datres.decode("utf-8"))
     return dicsrv
 
-  @staticmethod
-  async def getcmf():
+  # getcmf()
+
+  @classmethod
+  def getcmf(cls):
+    t = threading.Thread(target=cls.wrkcmf)
+    t.start()
+    t.join()
+    return cls.diccmf
+
+  def wrkcmf(cls):
+    cls.diccmf = asyncio.run(cls.asycmf())
+
+  async def asycmf(cls):
     adrmid = PrmCmf.adrmid
     datreq = {"keyprc": "xoxxox.AppCmf.diccmf"}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)

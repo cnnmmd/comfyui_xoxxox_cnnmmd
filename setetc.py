@@ -3,7 +3,7 @@
 
 from PIL import Image
 import torch
-from .lib.shared import CnvImg
+from .lib.shared_img import CnvImg
 
 #---------------------------------------------------------------------------
 # 変換（テキストの一部を指定の文字列で置換する）

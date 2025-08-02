@@ -4,8 +4,8 @@ import io
 from PIL import Image
 import torch
 import torchaudio
-from .lib.shared import CnvImg
 from .lib.midclt import MidClt
+from .lib.shared_img import CnvImg
 from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------

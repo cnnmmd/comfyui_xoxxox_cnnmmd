@@ -26,7 +26,8 @@ class Xoxxox_SetMem:
   async def anchor(self, keydat, keymem):
     datreq = {"status": "0", "keyprc": "xoxxox.OpeMem.setmem", "keydat": keydat, "keymem": keymem}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    return ("",)
+    keydat = datres["keydat"]
+    return (keydat,)
 
 #---------------------------------------------------------------------------
 # メモリを参照

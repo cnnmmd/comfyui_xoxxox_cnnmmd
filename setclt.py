@@ -6,24 +6,26 @@ from .lib.params_tlk import PrmVce, PrmSwt
 
 #---------------------------------------------------------------------------
 
+dictip = PrcCmf.gettip()
 dicsrv = PrcCmf.getsrv()
 
 #---------------------------------------------------------------------------
 # サウンドを送信（フロントエンド（ウェブブラウザ）から）
 
-class Xoxxox_SndVce:
+class SndVce:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True}),
-        "srvmid": ("STRING", {"default": PrmVce.srvmid}),
-        "pthsnd": ("STRING", {"default": PrmVce.pthsnd}),
-        "thdvce": ("FLOAT", {"default": 0.05}),
-        "mscend": ("INT", {"default": 2000}),
+        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SndVce.string"]}),
+        "srvmid": ("STRING", {"default": PrmVce.srvmid, "tooltip": dictip["SndVce.srvmid"]}),
+        "pthsnd": ("STRING", {"default": PrmVce.pthsnd, "tooltip": dictip["SndVce.pthsnd"]}),
+        "thdvce": ("FLOAT", {"default": 0.05, "tooltip": dictip["SndVce.thdvce"]}),
+        "mscend": ("INT", {"default": 2000, "tooltip": dictip["SndVce.mscend"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("string",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setclt"
 
@@ -35,17 +37,18 @@ class Xoxxox_SndVce:
 #---------------------------------------------------------------------------
 # サウンドを受信（フロントエンド（ウェブブラウザ）で）
 
-class Xoxxox_RcvVce:
+class RcvVce:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True}),
-        "srvmid": ("STRING", {"default": PrmVce.srvmid}),
-        "pthrcv": ("STRING", {"default": PrmVce.pthrcv}),
+        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["RcvVce.string"]}),
+        "srvmid": ("STRING", {"default": PrmVce.srvmid, "tooltip": dictip["RcvVce.srvmid"]}),
+        "pthrcv": ("STRING", {"default": PrmVce.pthrcv, "tooltip": dictip["RcvVce.pthrcv"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("string",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setclt"
 
@@ -57,26 +60,27 @@ class Xoxxox_RcvVce:
 #---------------------------------------------------------------------------
 # サウンドを受信〜イメージを切替（フロントエンド（ウェブブラウザ）で）
 
-class Xoxxox_SwtImg:
+class SwtImg:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True}),
-        "srvmid": ("STRING", {"default": PrmVce.srvmid}),
-        "srvweb": ("STRING", {"default": PrmSwt.srvweb}),
-        "pthrcv": ("STRING", {"default": PrmVce.pthrcv}),
-        "thdvce": ("FLOAT", {"default": 0.05}),
-        "pthswc": ("STRING", {"default": PrmSwt.pthswc}),
-        "adrchr": ("STRING", {"default": PrmSwt.adrchr}),
-        "imgchr": ("STRING", {"default": PrmSwt.imgchr}),
-        "arrimg": ("STRING", {"default": "r"}),
-        "sclimg": ("FLOAT", {"default": 0.25}),
-        "poscox": ("FLOAT", {"default": 0.25}),
-        "poscoy": ("FLOAT", {"default": 0.00}),
+        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SwtImg.string"]}),
+        "srvmid": ("STRING", {"default": PrmVce.srvmid, "tooltip": dictip["SwtImg.srvmid"]}),
+        "srvweb": ("STRING", {"default": PrmSwt.srvweb, "tooltip": dictip["SwtImg.srvweb"]}),
+        "pthrcv": ("STRING", {"default": PrmVce.pthrcv, "tooltip": dictip["SwtImg.pthrcv"]}),
+        "thdvce": ("FLOAT", {"default": 0.05, "tooltip": dictip["SwtImg.thdvce"]}),
+        "pthswc": ("STRING", {"default": PrmSwt.pthswc, "tooltip": dictip["SwtImg.pthswc"]}),
+        "adrchr": ("STRING", {"default": PrmSwt.adrchr, "tooltip": dictip["SwtImg.adrchr"]}),
+        "imgchr": ("STRING", {"default": PrmSwt.imgchr, "tooltip": dictip["SwtImg.imgchr"]}),
+        "arrimg": ("STRING", {"default": "r", "tooltip": dictip["SwtImg.arrimg"]}),
+        "sclimg": ("FLOAT", {"default": 0.25, "tooltip": dictip["SwtImg.sclimg"]}),
+        "poscox": ("FLOAT", {"default": 0.25, "tooltip": dictip["SwtImg.poscox"]}),
+        "poscoy": ("FLOAT", {"default": 0.00, "tooltip": dictip["SwtImg.poscoy"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("string",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setclt"
 

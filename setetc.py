@@ -3,22 +3,28 @@
 
 from PIL import Image
 import torch
+from .lib.shared import PrcCmf
 from .lib.shared_img import CnvImg
+
+#---------------------------------------------------------------------------
+
+dictip = PrcCmf.gettip()
 
 #---------------------------------------------------------------------------
 # 変換（テキストの一部を指定の文字列で置換する）
 
-class Xoxxox_RepTxt:
+class RepTxt:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "txtbdy": ("STRING", {"forceInput": True, "multiline": True}),
-        "txtmod": ("STRING", {"forceInput": True, "multiline": True}),
-        "txtorg": ("STRING", {"forceInput": False, "multiline": False, "default": "<s>"}),
+        "txtbdy": ("STRING", {"forceInput": True, "multiline": True, "tooltip": dictip["RepTxt.txtbdy"]}),
+        "txtmod": ("STRING", {"forceInput": True, "multiline": True, "tooltip": dictip["RepTxt.txtmod"]}),
+        "txtorg": ("STRING", {"forceInput": False, "multiline": False, "default": "<s>", "tooltip": dictip["RepTxt.txtorg"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("txtres",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setetc"
 
@@ -29,27 +35,28 @@ class Xoxxox_RepTxt:
 #---------------------------------------------------------------------------
 # 変換（本体の画像とそのマスクを受け取り、透過画像を生成する）
 
-class Xoxxox_TrnBak:
+class TrnBak:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "imgtsr_con": ("IMAGE",),
-        "imgtsr_msk": ("MASK",),
+        "tsrimg": ("IMAGE",{"tooltip": dictip["TrnBak.tsrimg"]}),
+        "tsrmsk": ("MASK",{"tooltip": dictip["TrnBak.tsrmsk"]}),
       },
     }
   RETURN_TYPES = ("IMAGE",)
+  RETURN_NAMES = ("tsrimg",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setetc"
 
-  def anchor(self, imgtsr_con, imgtsr_msk):
+  def anchor(self, tsrimg, tsrmsk):
     lstimg = []
 
-    for (i, m) in enumerate(imgtsr_con):
-      imgpil_con = CnvImg.cnvpil(imgtsr_con[i])
-      imgpil_msk = CnvImg.cnvpil(imgtsr_msk[i])
-      r, g, b = imgpil_con.split()
-      imgpil_cmp = Image.merge("RGBA", (r, g, b, imgpil_msk))
-      lstimg.append(CnvImg.cnvtsr(imgpil_cmp)[None,])
-    lsttsr = torch.cat(lstimg)
-    return (lsttsr,)
+    for (i, m) in enumerate(tsrimg):
+      pilimg = CnvImg.cnvpil(tsrimg[i])
+      pilmsk = CnvImg.cnvpil(tsrmsk[i])
+      r, g, b = pilimg.split()
+      pilcmp = Image.merge("RGBA", (r, g, b, pilmsk))
+      lstimg.append(CnvImg.cnvtsr(pilcmp)[None,])
+    tsrimg = torch.cat(lstimg)
+    return (tsrimg,)

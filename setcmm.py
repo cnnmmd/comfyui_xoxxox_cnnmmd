@@ -3,16 +3,21 @@
 
 import server
 import time
+from .lib.shared import PrcCmf
+
+#---------------------------------------------------------------------------
+
+dictip = PrcCmf.gettip()
 
 #---------------------------------------------------------------------------
 # 機能：入力をコンソールに出力（文字）
 
-class Xoxxox_LogTxt:
+class LogTxt:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "txtreq": ("STRING", {"forceInput": True, "default": ""}),
+        "txtreq": ("STRING", {"forceInput": True, "default": "", "tooltip": dictip["LogTxt.txtreq"]}),
       },
     }
   OUTPUT_NODE = True
@@ -27,12 +32,12 @@ class Xoxxox_LogTxt:
 #---------------------------------------------------------------------------
 # 機能：入力をコンソールに出力（数値）
 
-class Xoxxox_LogNum:
+class LogNum:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "numreq": ("INT", {"forceInput": True, "default": 0}),
+        "numreq": ("INT", {"forceInput": True, "default": 0, "tooltip": dictip["LogNum.numreq"]}),
       },
     }
   OUTPUT_NODE = True
@@ -47,13 +52,13 @@ class Xoxxox_LogNum:
 #---------------------------------------------------------------------------
 # 機能：ワークフローを実行
 
-class Xoxxox_RunFlw:
+class RunFlw:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"forceInput": True, "default": ""}),
-        "numsec": ("INT", {"default": 5}),
+        "string": ("STRING", {"forceInput": True, "default": "", "tooltip": dictip["RunFlw.string"]}),
+        "numsec": ("INT", {"default": 5, "tooltip": dictip["RunFlw.numsec"]}),
       },
     }
   OUTPUT_NODE = True

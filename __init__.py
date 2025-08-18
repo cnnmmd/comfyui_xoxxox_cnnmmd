@@ -1,54 +1,89 @@
-from .setcmm import Xoxxox_LogTxt, Xoxxox_LogNum, Xoxxox_RunFlw
-from .setetc import Xoxxox_RepTxt, Xoxxox_TrnBak
-from .setmid import Xoxxox_IniFlw, Xoxxox_SetNil, Xoxxox_PutTxt, Xoxxox_SetTxt, Xoxxox_GetTxt, Xoxxox_SetImg, Xoxxox_GetImg, Xoxxox_SetAud, Xoxxox_GetAud, Xoxxox_DlySet, Xoxxox_DlyGet
-from .setmem import Xoxxox_SetMem, Xoxxox_GetMem
-from .setblb import Xoxxox_GetDir, Xoxxox_SetDir, Xoxxox_GetDis, Xoxxox_SetDis
-from .setcnv import Xoxxox_CnvDat
-from .setimg import Xoxxox_GenImg
-from .settlk import Xoxxox_CnvVce, Xoxxox_CnvTxt, Xoxxox_GenTxt, Xoxxox_CnvSen, Xoxxox_SenTxt
-from .setclt import Xoxxox_SndVce, Xoxxox_RcvVce, Xoxxox_SwtImg
+from .setcmm import LogTxt, LogNum, RunFlw
+from .setetc import RepTxt, TrnBak
+from .setmid import IniFlw, SetNil, PutTxt, SetTxt, GetTxt, SetImg, GetImg, SetAud, GetAud, DlySet, DlyGet
+from .setmem import SetMem, GetMem
+from .setblb import GetDir, SetDir, GetDis, SetDis
+from .setcnv import CnvDat
+from .setimg import GenImg
+from .settlk import CnvVce, CnvTxt, GenTxt, CnvSen, SenTxt
+from .setclt import SndVce, RcvVce, SwtImg
 
 NODE_CLASS_MAPPINGS = {
-  "Xoxxox_LogTxt": Xoxxox_LogTxt,
-  "Xoxxox_LogNum": Xoxxox_LogNum,
-  "Xoxxox_RunFlw": Xoxxox_RunFlw,
+  "Xoxxox_LogTxt": LogTxt,
+  "Xoxxox_LogNum": LogNum,
+  "Xoxxox_RunFlw": RunFlw,
 
-  "Xoxxox_RepTxt": Xoxxox_RepTxt,
-  "Xoxxox_TrnBak": Xoxxox_TrnBak,
+  "Xoxxox_RepTxt": RepTxt,
+  "Xoxxox_TrnBak": TrnBak,
 
-  "Xoxxox_IniFlw": Xoxxox_IniFlw,
-  "Xoxxox_SetNil": Xoxxox_SetNil,
-  "Xoxxox_PutTxt": Xoxxox_PutTxt,
-  "Xoxxox_SetTxt": Xoxxox_SetTxt,
-  "Xoxxox_GetTxt": Xoxxox_GetTxt,
-  "Xoxxox_SetImg": Xoxxox_SetImg,
-  "Xoxxox_GetImg": Xoxxox_GetImg,
-  "Xoxxox_SetAud": Xoxxox_SetAud,
-  "Xoxxox_GetAud": Xoxxox_GetAud,
-  "Xoxxox_DlySet": Xoxxox_DlySet,
-  "Xoxxox_DlyGet": Xoxxox_DlyGet,
+  "Xoxxox_IniFlw": IniFlw,
+  "Xoxxox_SetNil": SetNil,
+  "Xoxxox_PutTxt": PutTxt,
+  "Xoxxox_SetTxt": SetTxt,
+  "Xoxxox_GetTxt": GetTxt,
+  "Xoxxox_SetImg": SetImg,
+  "Xoxxox_GetImg": GetImg,
+  "Xoxxox_SetAud": SetAud,
+  "Xoxxox_GetAud": GetAud,
+  "Xoxxox_DlySet": DlySet,
+  "Xoxxox_DlyGet": DlyGet,
 
-  "Xoxxox_SetMem": Xoxxox_SetMem,
-  "Xoxxox_GetMem": Xoxxox_GetMem,
+  "Xoxxox_SetMem": SetMem,
+  "Xoxxox_GetMem": GetMem,
 
-  "Xoxxox_GetDir": Xoxxox_GetDir,
-  "Xoxxox_SetDir": Xoxxox_SetDir,
-  "Xoxxox_GetDis": Xoxxox_GetDis,
-  "Xoxxox_SetDis": Xoxxox_SetDis,
+  "Xoxxox_GetDir": GetDir,
+  "Xoxxox_SetDir": SetDir,
+  "Xoxxox_GetDis": GetDis,
+  "Xoxxox_SetDis": SetDis,
 
-  "Xoxxox_CnvDat": Xoxxox_CnvDat,
+  "Xoxxox_CnvDat": CnvDat,
 
-  "Xoxxox_GenImg": Xoxxox_GenImg,
+  "Xoxxox_GenImg": GenImg,
 
-  "Xoxxox_CnvVce": Xoxxox_CnvVce,
-  "Xoxxox_CnvTxt": Xoxxox_CnvTxt,
-  "Xoxxox_GenTxt": Xoxxox_GenTxt,
-  "Xoxxox_CnvSen": Xoxxox_CnvSen,
-  "Xoxxox_SenTxt": Xoxxox_SenTxt,
+  "Xoxxox_CnvVce": CnvVce,
+  "Xoxxox_CnvTxt": CnvTxt,
+  "Xoxxox_GenTxt": GenTxt,
+  "Xoxxox_CnvSen": CnvSen,
+  "Xoxxox_SenTxt": SenTxt,
 
-  "Xoxxox_SndVce": Xoxxox_SndVce,
-  "Xoxxox_RcvVce": Xoxxox_RcvVce,
-  "Xoxxox_SwtImg": Xoxxox_SwtImg,
+  "Xoxxox_SndVce": SndVce,
+  "Xoxxox_RcvVce": RcvVce,
+  "Xoxxox_SwtImg": SwtImg,
+}
+
+NODE_DISPLAY_NAME_MAPPINGS = {
+  "Xoxxox_LogNum": "Log Number",
+  "Xoxxox_LogTxt": "Log Text",
+  "Xoxxox_RunFlw": "Restart Workflow",
+  "Xoxxox_RepTxt": "Replace Text",
+  "Xoxxox_TrnBak": "Convert Mask to Alpha",
+  "Xoxxox_IniFlw": "Initialize Relay State",
+  "Xoxxox_SetNil": "Send Empty Data",
+  "Xoxxox_PutTxt": "Input Text",
+  "Xoxxox_SetTxt": "Send Text",
+  "Xoxxox_GetTxt": "Receive Text",
+  "Xoxxox_SetImg": "Send Image",
+  "Xoxxox_GetImg": "Receive Image",
+  "Xoxxox_SetAud": "Send Audio",
+  "Xoxxox_GetAud": "Receive Audio",
+  "Xoxxox_DlySet": "Poll (Send Data-Key when Ready)",
+  "Xoxxox_DlyGet": "Poll (Receive Data-Key when Ready)",
+  "Xoxxox_SetDir": "Write File",
+  "Xoxxox_GetDir": "Read File",
+  "Xoxxox_SetDis": "Auto-Write Files",
+  "Xoxxox_GetDis": "Auto-Read Files",
+  "Xoxxox_SetMem": "Write Memory",
+  "Xoxxox_GetMem": "Read Memory",
+  "Xoxxox_CnvDat": "Convert Data",
+  "Xoxxox_GenImg": "Generate Image",
+  "Xoxxox_CnvTxt": "Transcribe Speech (STT, ...)",
+  "Xoxxox_CnvVce": "Synthesize Speech (TTS, ...)",
+  "Xoxxox_GenTxt": "Generate Text (LLM, ...)",
+  "Xoxxox_CnvSen": "Analyze Sentiment (SA, ER, ...)",
+  "Xoxxox_SenTxt": "Convert Sentiment to Text",
+  "Xoxxox_SndVce": "Record and Send Audio",
+  "Xoxxox_RcvVce": "Receive and Play Audio",
+  "Xoxxox_SwtImg": "Receive and Play Audio (Lip-Sync)"
 }
 
 WEB_DIRECTORY = "./web"

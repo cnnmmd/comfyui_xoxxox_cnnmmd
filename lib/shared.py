@@ -1,5 +1,6 @@
 #---------------------------------------------------------------------------
 
+import os
 import json
 import asyncio
 import threading
@@ -11,8 +12,19 @@ from .params_cmf import PrmCmf
 
 class PrcCmf:
 
+  dictip = {}
   dicsrv = {}
   diccmf = {}
+
+  # gettip()
+
+  @classmethod
+  def gettip(cls):
+    dirtop = os.path.dirname(__file__)
+    pthtip = os.path.join(dirtop, "params_tip.json")
+    with open(pthtip, "r") as f:
+      dictip = json.load(f)
+    return dictip
 
   # getsrv()
 

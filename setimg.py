@@ -6,6 +6,7 @@ from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
+dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 dicsrv = PrcCmf.getsrv()
 diccnf = PrcCmf.getcmf()
@@ -13,18 +14,19 @@ diccnf = PrcCmf.getcmf()
 #---------------------------------------------------------------------------
 # 画像を生成
 
-class Xoxxox_GenImg:
+class GenImg:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
-        "keyneg": ("STRING", {"default": "", "forceInput": True}),
-        "server": (diccnf["lstimg_nod"], {"default": diccnf["defimg_nod"]}),
-        "config": (diccnf["lstimg_cnf"], {"default": diccnf["defimg_cnf"]}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GenImg.keydat"]}),
+        "keyneg": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GenImg.keyneg"]}),
+        "server": (diccnf["lstimg_nod"], {"default": diccnf["defimg_nod"], "tooltip": dictip["GenImg.server"]}),
+        "config": (diccnf["lstimg_cnf"], {"default": diccnf["defimg_cnf"], "tooltip": dictip["GenImg.config"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setimg"
 

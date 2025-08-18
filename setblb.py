@@ -1,25 +1,28 @@
 #---------------------------------------------------------------------------
 
 from .lib.midclt import MidClt
+from .lib.shared import PrcCmf
 from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
+dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 
 #---------------------------------------------------------------------------
 # ファイルに格納
 
-class Xoxxox_SetDir:
+class SetDir:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
-        "target": ("STRING", {"default": "/opt/strage/sample_001.bin"}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetDir.keydat"]}),
+        "target": ("STRING", {"default": "/opt/strage/sample_001.bin", "tooltip": dictip["SetDir.target"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("string",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setblb"
 
@@ -31,16 +34,17 @@ class Xoxxox_SetDir:
 #---------------------------------------------------------------------------
 # ファイルを参照
 
-class Xoxxox_GetDir:
+class GetDir:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True}),
-        "target": ("STRING", {"default": "/opt/common/web/xoxxox/doc/sample_001.bin"}),
+        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetDir.string"]}),
+        "target": ("STRING", {"default": "/opt/common/web/xoxxox/doc/sample_001.bin", "tooltip": dictip["GetDir.target"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setblb"
 
@@ -53,17 +57,18 @@ class Xoxxox_GetDir:
 #---------------------------------------------------------------------------
 # ファイルに格納（キーを元に）
 
-class Xoxxox_SetDis:
+class SetDis:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
-        "folder": ("STRING", {"default": "/opt/strage"}),
-        "extdat": ("STRING", {"default": ".txt"}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetDis.keydat"]}),
+        "folder": ("STRING", {"default": "/opt/strage", "tooltip": dictip["SetDis.folder"]}),
+        "extdat": ("STRING", {"default": ".txt", "tooltip": dictip["SetDis.extdat"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("string",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setblb"
 
@@ -75,17 +80,18 @@ class Xoxxox_SetDis:
 #---------------------------------------------------------------------------
 # ファイルを参照（複数、順次）
 
-class Xoxxox_GetDis:
+class GetDis:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True}),
-        "folder": ("STRING", {"default": "/opt/common/web/xoxxox/doc"}),
-        "extdat": ("STRING", {"default": ".txt"}),
+        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetDis.string"]}),
+        "folder": ("STRING", {"default": "/opt/common/web/xoxxox/doc", "tooltip": dictip["GetDis.folder"]}),
+        "extdat": ("STRING", {"default": ".txt", "tooltip": dictip["GetDis.extdat"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setblb"
 

@@ -5,25 +5,28 @@ from PIL import Image
 import torch
 import torchaudio
 from .lib.midclt import MidClt
+from .lib.shared import PrcCmf
 from .lib.shared_img import CnvImg
 from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
+dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 
 #---------------------------------------------------------------------------
 # 初期
 
-class Xoxxox_IniFlw:
+class IniFlw:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "random": ("INT", {"forceInput": True}),
+        "random": ("INT", {"forceInput": True, "tooltip": dictip["IniFlw.random"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("string",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
@@ -35,15 +38,16 @@ class Xoxxox_IniFlw:
 #---------------------------------------------------------------------------
 # 空文字を格納（空データを作る）
 
-class Xoxxox_SetNil:
+class SetNil:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True}),
+        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetNil.string"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
@@ -56,34 +60,37 @@ class Xoxxox_SetNil:
 #---------------------------------------------------------------------------
 # 文字列を入力
 
-class Xoxxox_PutTxt:
+class PutTxt:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True}),
-        "txtreq": ("STRING", {"default": "", "multiline": True}),
+        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["PutTxt.string"]}),
+        "txtreq": ("STRING", {"default": "", "multiline": True, "tooltip": dictip["PutTxt.txtreq"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("txtres",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
   def anchor(self, string, txtreq):
-    return (txtreq,)
+    txtres = txtreq
+    return (txtres,)
 
 #---------------------------------------------------------------------------
 # 文字列を格納
 
-class Xoxxox_SetTxt:
+class SetTxt:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "txtreq": ("STRING", {"default": "", "forceInput": True}),
+        "txtreq": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetTxt.txtreq"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
@@ -96,15 +103,16 @@ class Xoxxox_SetTxt:
 #---------------------------------------------------------------------------
 # 文字列を取得
 
-class Xoxxox_GetTxt:
+class GetTxt:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetTxt.keydat"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("txtres",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
@@ -117,15 +125,16 @@ class Xoxxox_GetTxt:
 #---------------------------------------------------------------------------
 # 画像を格納
 
-class Xoxxox_SetImg:
+class SetImg:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "imgtsr": ("IMAGE",)
+        "imgtsr": ("IMAGE",{"tooltip": dictip["SetImg.imgtsr"]})
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
@@ -141,15 +150,16 @@ class Xoxxox_SetImg:
 #---------------------------------------------------------------------------
 # 画像を取得
 
-class Xoxxox_GetImg:
+class GetImg:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetImg.keydat"]}),
       },
     }
   RETURN_TYPES = ("IMAGE",)
+  RETURN_NAMES = ("tsrimg",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
@@ -160,21 +170,22 @@ class Xoxxox_GetImg:
     buffer = io.BytesIO(datres)
     imgpil = Image.open(buffer)
     lstimg.append(CnvImg.cnvtsr(imgpil)[None,])
-    lsttsr = torch.cat(lstimg)
-    return (lsttsr,)
+    tsrimg = torch.cat(lstimg)
+    return (tsrimg,)
 
 #---------------------------------------------------------------------------
 # 音声を格納
 
-class Xoxxox_SetAud:
+class SetAud:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "dicwav": ("AUDIO",)
+        "dicwav": ("AUDIO",{"tooltip": dictip["SetAud.dicwav"]})
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
@@ -191,15 +202,16 @@ class Xoxxox_SetAud:
 #---------------------------------------------------------------------------
 # 音声を取得
 
-class Xoxxox_GetAud:
+class GetAud:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetAud.keydat"]}),
       },
     }
   RETURN_TYPES = ("AUDIO",)
+  RETURN_NAMES = ("dicwav",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
@@ -218,16 +230,17 @@ class Xoxxox_GetAud:
 #---------------------------------------------------------------------------
 # データＩＤを引き渡し／準備ができたら（/sppNNN ）……対になる処理：ローデータを受け取り／受信完了を通知（/spsNNN ）
 
-class Xoxxox_DlySet:
+class DlySet:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True}),
-        "keyset": ("STRING", {"default": "000"}),
+        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["DlySet.string"]}),
+        "keyset": ("STRING", {"default": "000", "tooltip": dictip["DlyGet.keyget"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
@@ -240,16 +253,17 @@ class Xoxxox_DlySet:
 #---------------------------------------------------------------------------
 # データＩＤを受け取り／受信完了を通知（/gpsNNN ）……対になる処理：ローデータを引き渡し／準備ができたら（/gppNNN ）
 
-class Xoxxox_DlyGet:
+class DlyGet:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
-        "keyget": ("STRING", {"default": "000"}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["DlyGet.keydat"]}),
+        "keyget": ("STRING", {"default": "000", "tooltip": dictip["DlyGet.keyget"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("string",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 

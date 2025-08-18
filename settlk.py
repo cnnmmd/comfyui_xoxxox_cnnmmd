@@ -6,6 +6,7 @@ from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
+dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 dicsrv = PrcCmf.getsrv()
 diccnf = PrcCmf.getcmf()
@@ -13,17 +14,18 @@ diccnf = PrcCmf.getcmf()
 #---------------------------------------------------------------------------
 # サウンドからテキストに変換（ＳＴＴ）
 
-class Xoxxox_CnvTxt:
+class CnvTxt:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
-        "server": (diccnf["lststt_nod"], {"default": diccnf["defstt_nod"]}),
-        "config": (diccnf["lststt_cnf"], {"default": diccnf["defstt_cnf"]}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvTxt.keydat"]}),
+        "server": (diccnf["lststt_nod"], {"default": diccnf["defstt_nod"], "tooltip": dictip["CnvTxt.server"]}),
+        "config": (diccnf["lststt_cnf"], {"default": diccnf["defstt_cnf"], "tooltip": dictip["CnvTxt.config"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/settlk"
 
@@ -36,17 +38,18 @@ class Xoxxox_CnvTxt:
 #---------------------------------------------------------------------------
 # テキストからサウンドに変換（ＴＴＳ）
 
-class Xoxxox_CnvVce:
+class CnvVce:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
-        "server": (diccnf["lsttts_nod"], {"default": diccnf["deftts_nod"]}),
-        "config": (diccnf["lsttts_cnf"], {"default": diccnf["deftts_cnf"]}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvVce.keydat"]}),
+        "server": (diccnf["lsttts_nod"], {"default": diccnf["deftts_nod"], "tooltip": dictip["CnvVce.server"]}),
+        "config": (diccnf["lsttts_cnf"], {"default": diccnf["deftts_cnf"], "tooltip": dictip["CnvVce.config"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/settlk"
 
@@ -59,17 +62,18 @@ class Xoxxox_CnvVce:
 #---------------------------------------------------------------------------
 # テキストからテキストを生成（ＬＬＭ）
 
-class Xoxxox_GenTxt:
+class GenTxt:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
-        "server": (diccnf["lstttt_nod"], {"default": diccnf["defttt_nod"]}),
-        "config": (diccnf["lstttt_cnf"], {"default": diccnf["defttt_cnf"]}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GenTxt.keydat"]}),
+        "server": (diccnf["lstttt_nod"], {"default": diccnf["defttt_nod"], "tooltip": dictip["GenTxt.server"]}),
+        "config": (diccnf["lstttt_cnf"], {"default": diccnf["defttt_cnf"], "tooltip": dictip["GenTxt.config"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/settlk"
 
@@ -82,17 +86,18 @@ class Xoxxox_GenTxt:
 #---------------------------------------------------------------------------
 # サウンドからテキストに変換（感情分析）
 
-class Xoxxox_CnvSen:
+class CnvSen:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
-        "server": (diccnf["lstsen_nod"], {"default": diccnf["defsen_nod"]}),
-        "config": (diccnf["lstsen_cnf"], {"default": diccnf["defsen_cnf"]}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvSen.keydat"]}),
+        "server": (diccnf["lstsen_nod"], {"default": diccnf["defsen_nod"], "tooltip": dictip["CnvSen.server"]}),
+        "config": (diccnf["lstsen_cnf"], {"default": diccnf["defsen_cnf"], "tooltip": dictip["CnvSen.config"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/settlk"
 
@@ -113,23 +118,24 @@ class Xoxxox_CnvSen:
 # 6: 嫌悪/disgust
 # 7: 信頼/trust
 
-class Xoxxox_SenTxt:
+class SenTxt:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "txtreq": ("STRING", {"forceInput": True}),
-        "sen000": ("STRING", {"forceInput": False, "multiline": False, "default": "joy"}),
-        "sen001": ("STRING", {"forceInput": False, "multiline": False, "default": "sadness"}),
-        "sen002": ("STRING", {"forceInput": False, "multiline": False, "default": "anticipation"}),
-        "sen003": ("STRING", {"forceInput": False, "multiline": False, "default": "surprise"}),
-        "sen004": ("STRING", {"forceInput": False, "multiline": False, "default": "anger"}),
-        "sen005": ("STRING", {"forceInput": False, "multiline": False, "default": "fear"}),
-        "sen006": ("STRING", {"forceInput": False, "multiline": False, "default": "disgust"}),
-        "sen007": ("STRING", {"forceInput": False, "multiline": False, "default": "trust"}),
+        "txtreq": ("STRING", {"forceInput": True, "tooltip": dictip["SenTxt.txtreq"]}),
+        "sen000": ("STRING", {"forceInput": False, "multiline": False, "default": "joy", "tooltip": dictip["SenTxt.sen000"]}),
+        "sen001": ("STRING", {"forceInput": False, "multiline": False, "default": "sadness", "tooltip": dictip["SenTxt.sen001"]}),
+        "sen002": ("STRING", {"forceInput": False, "multiline": False, "default": "anticipation", "tooltip": dictip["SenTxt.sen002"]}),
+        "sen003": ("STRING", {"forceInput": False, "multiline": False, "default": "surprise", "tooltip": dictip["SenTxt.sen003"]}),
+        "sen004": ("STRING", {"forceInput": False, "multiline": False, "default": "anger", "tooltip": dictip["SenTxt.sen004"]}),
+        "sen005": ("STRING", {"forceInput": False, "multiline": False, "default": "fear", "tooltip": dictip["SenTxt.sen005"]}),
+        "sen006": ("STRING", {"forceInput": False, "multiline": False, "default": "disgust", "tooltip": dictip["SenTxt.sen006"]}),
+        "sen007": ("STRING", {"forceInput": False, "multiline": False, "default": "trust", "tooltip": dictip["SenTxt.sen007"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("txtres",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/settlk"
 

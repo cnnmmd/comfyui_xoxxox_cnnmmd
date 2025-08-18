@@ -6,22 +6,24 @@ from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
+dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 diccnf = PrcCmf.getcmf()
 
 #---------------------------------------------------------------------------
 # データを変換
 
-class Xoxxox_CnvDat:
+class CnvDat:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
-        "method": (diccnf["lstcnv_dat"], {"default": diccnf["defcnv_dat"]}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvDat.keydat"]}),
+        "method": (diccnf["lstcnv_dat"], {"default": diccnf["defcnv_dat"], "tooltip": dictip["CnvDat.method"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setcnv"
 

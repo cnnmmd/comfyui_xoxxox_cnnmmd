@@ -1,25 +1,28 @@
 #---------------------------------------------------------------------------
 
 from .lib.midclt import MidClt
+from .lib.shared import PrcCmf
 from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
+dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 
 #---------------------------------------------------------------------------
 # メモリに格納
 
-class Xoxxox_SetMem:
+class SetMem:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
-        "keymem": ("STRING", {"default": "mem000"}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetMem.keydat"]}),
+        "keymem": ("STRING", {"default": "mem000", "tooltip": dictip["SetMem.keymem"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmem"
 
@@ -32,16 +35,17 @@ class Xoxxox_SetMem:
 #---------------------------------------------------------------------------
 # メモリを参照
 
-class Xoxxox_GetMem:
+class GetMem:
   @classmethod
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True}),
-        "keymem": ("STRING", {"default": "mem000"}),
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetMem.keydat"]}),
+        "keymem": ("STRING", {"default": "mem000", "tooltip": dictip["GetMem.keymem"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmem"
 

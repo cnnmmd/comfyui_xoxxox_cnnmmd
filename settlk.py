@@ -157,3 +157,23 @@ class SenTxt:
     elif txtreq == "7":
       txtres = sen007
     return (txtres,)
+
+#---------------------------------------------------------------------------
+# 感情分析（セレクタ〜テキスト）
+
+class SenSlc:
+  @classmethod
+  def INPUT_TYPES(s):
+    return {
+      "required": {
+        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SenSlc.string"]}),
+        "select": (["0", "1", "2", "3", "4", "5", "6", "7"], {"default": "0", "tooltip": dictip["SenSlc.select"]}),
+      },
+    }
+  RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("txtres",)
+  FUNCTION = "anchor"
+  CATEGORY = "xoxxox/settlk"
+
+  async def anchor(self, string, select):
+    return (select,)

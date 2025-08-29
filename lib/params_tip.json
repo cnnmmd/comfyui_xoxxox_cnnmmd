@@ -81,7 +81,7 @@
   "SwtImg.pthswc": "Relay server endpoint path (when changing image identifier)",
   "SwtImg.adrchr": "Image path pattern: image identifier (c) + difference (o)",
   "SwtImg.imgchr": "Image identifier (input this item when changing identifier)",
-  "SwtImg.arrimg": "Reference position on screen (left/center/right: l/c/r)",
+  "SwtImg.arrimg": "Reference position on screen (left/right: l/r)",
   "SwtImg.sclimg": "Scale on screen (relative to window)",
   "SwtImg.poscox": "Position on screen: horizontal (X)",
   "SwtImg.poscoy": "Position on screen: vertical (Y)"

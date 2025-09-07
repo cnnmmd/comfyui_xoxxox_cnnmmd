@@ -96,7 +96,7 @@ class GenTxt_Opt:
         "config": (diccnf["lstttt_cnf"], {"default": diccnf["defttt_cnf"], "tooltip": dictip["GenTxt.config"]}),
       },
     }
-  RETURN_TYPES = ("STRING",)
+  RETURN_TYPES = ("STRING", "STRING")
   RETURN_NAMES = ("keydat", "keyopt")
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/settlk"

@@ -84,6 +84,31 @@ class GenTxt:
     return (keydat,)
 
 #---------------------------------------------------------------------------
+# テキストからテキストを生成（ＬＬＭ）：オプションあり
+
+class GenTxt_Opt:
+  @classmethod
+  def INPUT_TYPES(s):
+    return {
+      "required": {
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GenTxt.keydat"]}),
+        "server": (diccnf["lstttt_nod"], {"default": diccnf["defttt_nod"], "tooltip": dictip["GenTxt.server"]}),
+        "config": (diccnf["lstttt_cnf"], {"default": diccnf["defttt_cnf"], "tooltip": dictip["GenTxt.config"]}),
+      },
+    }
+  RETURN_TYPES = ("STRING", "STRING")
+  RETURN_NAMES = ("keydat", "keyopt")
+  FUNCTION = "anchor"
+  CATEGORY = "xoxxox/settlk"
+
+  async def anchor(self, keydat, server, config):
+    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcTtt_Opt.cnnttt", "server": dicsrv[server], "config": config}
+    datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
+    keydat = datres["key000"]
+    keyopt = datres["key001"]
+    return (keydat, keyopt)
+
+#---------------------------------------------------------------------------
 # サウンドからテキストに変換（感情分析）
 
 class CnvSen:

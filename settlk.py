@@ -104,7 +104,7 @@ class GenTxt_Opt:
   async def anchor(self, keydat, server, config):
     datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcTtt_Opt.cnnttt", "server": dicsrv[server], "config": config}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    keydat = datres["keydat"]
+    keydat = datres["key000"]
     keyopt = datres["key001"]
     return (keydat, keyopt)
 

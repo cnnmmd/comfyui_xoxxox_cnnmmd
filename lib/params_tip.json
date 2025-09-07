@@ -49,6 +49,7 @@
   "CnvTxt.server": "Label of speech recognition (STT) server",
   "CnvTxt.config": "Configuration file",
   "GenTxt.keydat": "Binary data key (content: text)",
+  "GenTxt_Opt.keydat": "Binary data key (content: text)",
   "GenTxt.server": "Label of language generation (LLM) server",
   "GenTxt.config": "Configuration file",
   "CnvSen.keydat": "Binary data key (content: text)",

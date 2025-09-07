@@ -81,7 +81,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
   "Xoxxox_CnvTxt": "Transcribe Speech (STT, ...)",
   "Xoxxox_CnvVce": "Synthesize Speech (TTS, ...)",
   "Xoxxox_GenTxt": "Generate Text (LLM, ...)",
-  "Xoxxox_GenTxt_Opt": "Generate Text (LLM, ...)",
+  "Xoxxox_GenTxt_Opt": "Generate Text with Info (LLM, ...)",
   "Xoxxox_CnvSen": "Analyze Sentiment (SA, ER, ...)",
   "Xoxxox_SenTxt": "Convert Emotion Label to Text",
   "Xoxxox_SenSlc": "Select Emotion Label",

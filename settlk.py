@@ -60,33 +60,9 @@ class CnvVce:
     return (keydat,)
 
 #---------------------------------------------------------------------------
-# テキストからテキストを生成（ＬＬＭ）
-
-class GenTxt:
-  @classmethod
-  def INPUT_TYPES(s):
-    return {
-      "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GenTxt.keydat"]}),
-        "server": (diccnf["lstttt_nod"], {"default": diccnf["defttt_nod"], "tooltip": dictip["GenTxt.server"]}),
-        "config": (diccnf["lstttt_cnf"], {"default": diccnf["defttt_cnf"], "tooltip": dictip["GenTxt.config"]}),
-      },
-    }
-  RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
-  FUNCTION = "anchor"
-  CATEGORY = "xoxxox/settlk"
-
-  async def anchor(self, keydat, server, config):
-    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcTtt.cnnttt", "server": dicsrv[server], "config": config}
-    datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    keydat = datres["keydat"]
-    return (keydat,)
-
-#---------------------------------------------------------------------------
 # テキストからテキストを生成（ＬＬＭ）：オプションあり
 
-class GenTxt_Opt:
+class GenTxt:
   @classmethod
   def INPUT_TYPES(s):
     return {
@@ -102,7 +78,7 @@ class GenTxt_Opt:
   CATEGORY = "xoxxox/settlk"
 
   async def anchor(self, keydat, server, config):
-    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcTtt_Opt.cnnttt", "server": dicsrv[server], "config": config}
+    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcTtt.cnnttt", "server": dicsrv[server], "config": config}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
     keydat = datres["key000"]
     keyopt = datres["key001"]

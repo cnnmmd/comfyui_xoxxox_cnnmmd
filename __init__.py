@@ -5,7 +5,7 @@ from .setmem import SetMem, GetMem
 from .setblb import GetDir, SetDir, GetDis, SetDis
 from .setcnv import CnvDat
 from .setimg import GenImg
-from .settlk import CnvVce, CnvTxt, GenTxt, GenTxt_Opt, CnvSen, SenTxt, SenSlc
+from .settlk import CnvVce, CnvTxt, GenTxt, CnvSen, SenTxt, SenSlc
 from .setclt import SndVce, RcvVce, SwtImg
 
 NODE_CLASS_MAPPINGS = {
@@ -43,7 +43,6 @@ NODE_CLASS_MAPPINGS = {
   "Xoxxox_CnvVce": CnvVce,
   "Xoxxox_CnvTxt": CnvTxt,
   "Xoxxox_GenTxt": GenTxt,
-  "Xoxxox_GenTxt_Opt": GenTxt_Opt,
   "Xoxxox_CnvSen": CnvSen,
   "Xoxxox_SenTxt": SenTxt,
   "Xoxxox_SenSlc": SenSlc,
@@ -80,8 +79,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
   "Xoxxox_GenImg": "Generate Image",
   "Xoxxox_CnvTxt": "Transcribe Speech (STT, ...)",
   "Xoxxox_CnvVce": "Synthesize Speech (TTS, ...)",
-  "Xoxxox_GenTxt": "Generate Text (LLM, ...)",
-  "Xoxxox_GenTxt_Opt": "Generate Text with Info (LLM, ...)",
+  "Xoxxox_GenTxt": "Generate Text with Info (LLM, ...)",
   "Xoxxox_CnvSen": "Analyze Sentiment (SA, ER, ...)",
   "Xoxxox_SenTxt": "Convert Emotion Label to Text",
   "Xoxxox_SenSlc": "Select Emotion Label",

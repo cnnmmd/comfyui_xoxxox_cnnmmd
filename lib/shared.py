@@ -44,7 +44,7 @@ class PrcCmf:
     adrmid = PrmCmf.adrmid
     datreq = {"keyprc": "xoxxox.AppCmf.dicsrv"}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    datres = await MidClt.reqget({"keydat": datres["keydat"]}, adrmid + MidClt.adrget)
+    datres = await MidClt.reqget({"keymmd": datres["keymmd"]}, adrmid + MidClt.adrget)
     dicsrv = json.loads(datres.decode("utf-8"))
     return dicsrv
 
@@ -66,6 +66,6 @@ class PrcCmf:
     adrmid = PrmCmf.adrmid
     datreq = {"keyprc": "xoxxox.AppCmf.diccmf"}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    datres = await MidClt.reqget({"keydat": datres["keydat"]}, adrmid + MidClt.adrget)
+    datres = await MidClt.reqget({"keymmd": datres["keymmd"]}, adrmid + MidClt.adrget)
     diccmf = json.loads(datres.decode("utf-8"))
     return diccmf

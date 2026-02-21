@@ -19,21 +19,21 @@ class CnvTxt:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvTxt.keydat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvTxt.keymmd"]}),
         "server": (diccnf["lststt_nod"], {"default": diccnf["defstt_nod"], "tooltip": dictip["CnvTxt.server"]}),
         "config": (diccnf["lststt_cnf"], {"default": diccnf["defstt_cnf"], "tooltip": dictip["CnvTxt.config"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
+  RETURN_NAMES = ("keymmd",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/settlk"
 
-  async def anchor(self, keydat, server, config):
-    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcStt.cnnstt", "server": dicsrv[server], "config": config}
+  async def anchor(self, keymmd, server, config):
+    datreq = {"status": "0", "keymmd": keymmd, "keyprc": "xoxxox.PrcStt.cnnstt", "server": dicsrv[server], "config": config}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    keydat = datres["keydat"]
-    return (keydat,)
+    keymmd = datres["keymmd"]
+    return (keymmd,)
 
 #---------------------------------------------------------------------------
 # テキストからサウンドに変換（ＴＴＳ）
@@ -43,21 +43,21 @@ class CnvVce:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvVce.keydat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvVce.keymmd"]}),
         "server": (diccnf["lsttts_nod"], {"default": diccnf["deftts_nod"], "tooltip": dictip["CnvVce.server"]}),
         "config": (diccnf["lsttts_cnf"], {"default": diccnf["deftts_cnf"], "tooltip": dictip["CnvVce.config"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
+  RETURN_NAMES = ("keymmd",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/settlk"
 
-  async def anchor(self, keydat, server, config):
-    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcTts.cnntts", "server": dicsrv[server], "config": config}
+  async def anchor(self, keymmd, server, config):
+    datreq = {"status": "0", "keymmd": keymmd, "keyprc": "xoxxox.PrcTts.cnntts", "server": dicsrv[server], "config": config}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    keydat = datres["keydat"]
-    return (keydat,)
+    keymmd = datres["keymmd"]
+    return (keymmd,)
 
 #---------------------------------------------------------------------------
 # テキストからテキストを生成（ＬＬＭ）：オプションあり
@@ -67,22 +67,22 @@ class GenTxt:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GenTxt.keydat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GenTxt.keymmd"]}),
         "server": (diccnf["lstttt_nod"], {"default": diccnf["defttt_nod"], "tooltip": dictip["GenTxt.server"]}),
         "config": (diccnf["lstttt_cnf"], {"default": diccnf["defttt_cnf"], "tooltip": dictip["GenTxt.config"]}),
       },
     }
   RETURN_TYPES = ("STRING", "STRING")
-  RETURN_NAMES = ("keydat", "keyopt")
+  RETURN_NAMES = ("keymmd", "keyopt")
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/settlk"
 
-  async def anchor(self, keydat, server, config):
-    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcTtt.cnnttt", "server": dicsrv[server], "config": config}
+  async def anchor(self, keymmd, server, config):
+    datreq = {"status": "0", "keymmd": keymmd, "keyprc": "xoxxox.PrcTtt.cnnttt", "server": dicsrv[server], "config": config}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    keydat = datres["key000"]
+    keymmd = datres["key000"]
     keyopt = datres["key001"]
-    return (keydat, keyopt)
+    return (keymmd, keyopt)
 
 #---------------------------------------------------------------------------
 # テキストからテキストに変換（感情分析）
@@ -92,21 +92,21 @@ class CnvSen:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvSen.keydat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvSen.keymmd"]}),
         "server": (diccnf["lstsen_nod"], {"default": diccnf["defsen_nod"], "tooltip": dictip["CnvSen.server"]}),
         "config": (diccnf["lstsen_cnf"], {"default": diccnf["defsen_cnf"], "tooltip": dictip["CnvSen.config"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
+  RETURN_NAMES = ("keymmd",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/settlk"
 
-  async def anchor(self, keydat, server, config):
-    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcSen.cnnsen", "server": dicsrv[server], "config": config}
+  async def anchor(self, keymmd, server, config):
+    datreq = {"status": "0", "keymmd": keymmd, "keyprc": "xoxxox.PrcSen.cnnsen", "server": dicsrv[server], "config": config}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    keydat = datres["keydat"]
-    return (keydat,)
+    keymmd = datres["keymmd"]
+    return (keymmd,)
 
 #---------------------------------------------------------------------------
 # テキストからテキストに変換（ＲＡＧ）
@@ -116,21 +116,21 @@ class CnvRag:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvRag.keydat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvRag.keymmd"]}),
         "server": (diccnf["lstsen_nod"], {"default": diccnf["defsen_nod"], "tooltip": dictip["CnvRag.server"]}),
         "config": (diccnf["lstsen_cnf"], {"default": diccnf["defsen_cnf"], "tooltip": dictip["CnvRag.config"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
+  RETURN_NAMES = ("keymmd",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/settlk"
 
-  async def anchor(self, keydat, server, config):
-    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcRag.cnnrag", "server": dicsrv[server], "config": config}
+  async def anchor(self, keymmd, server, config):
+    datreq = {"status": "0", "keymmd": keymmd, "keyprc": "xoxxox.PrcRag.cnnrag", "server": dicsrv[server], "config": config}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    keydat = datres["keydat"]
-    return (keydat,)
+    keymmd = datres["keymmd"]
+    return (keymmd,)
 
 #---------------------------------------------------------------------------
 # 感情分析（テキスト〜テキスト）

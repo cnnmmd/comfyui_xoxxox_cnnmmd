@@ -49,15 +49,15 @@ class SetNil:
       },
     }
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
+  RETURN_NAMES = ("keymmd",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
   async def anchor(self, string):
     datreq = "" # ウェブ経由でアップロードする際、バイト列に変換される（不要：b"" ）
     datres = await MidClt.reqset(datreq, adrmid + MidClt.adrset)
-    keydat = datres["keydat"]
-    return (keydat,)
+    keymmd = datres["keymmd"]
+    return (keymmd,)
 
 #---------------------------------------------------------------------------
 # 文字列を入力
@@ -92,15 +92,15 @@ class SetTxt:
       },
     }
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
+  RETURN_NAMES = ("keymmd",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
   async def anchor(self, txtreq):
     datreq = txtreq
     datres = await MidClt.reqset(datreq, adrmid + MidClt.adrset)
-    keydat = datres["keydat"]
-    return (keydat,)
+    keymmd = datres["keymmd"]
+    return (keymmd,)
 
 #---------------------------------------------------------------------------
 # 文字列を取得
@@ -110,7 +110,7 @@ class GetTxt:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetTxt.keydat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetTxt.keymmd"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -118,8 +118,8 @@ class GetTxt:
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
-  async def anchor(self, keydat):
-    datreq = {"status": "0", "keydat": keydat}
+  async def anchor(self, keymmd):
+    datreq = {"status": "0", "keymmd": keymmd}
     datres = await MidClt.reqget(datreq, adrmid + MidClt.adrget)
     txtres = datres.decode("utf-8")
     return (txtres,)
@@ -136,7 +136,7 @@ class SetImg:
       },
     }
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
+  RETURN_NAMES = ("keymmd",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
@@ -146,8 +146,8 @@ class SetImg:
     imgpil.save(buffer, format="PNG")
     datreq = buffer.getvalue()
     datres = await MidClt.reqset(datreq, adrmid + MidClt.adrset)
-    keydat = datres["keydat"]
-    return (keydat,)
+    keymmd = datres["keymmd"]
+    return (keymmd,)
 
 #---------------------------------------------------------------------------
 # 画像を取得
@@ -157,7 +157,7 @@ class GetImg:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetImg.keydat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetImg.keymmd"]}),
       },
     }
   RETURN_TYPES = ("IMAGE",)
@@ -165,9 +165,9 @@ class GetImg:
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
-  async def anchor(self, keydat):
+  async def anchor(self, keymmd):
     lstimg = []
-    datreq = {"status": "0", "keydat": keydat}
+    datreq = {"status": "0", "keymmd": keymmd}
     datres = await MidClt.reqget(datreq, adrmid + MidClt.adrget)
     buffer = io.BytesIO(datres)
     imgpil = Image.open(buffer)
@@ -187,7 +187,7 @@ class SetAud:
       },
     }
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
+  RETURN_NAMES = ("keymmd",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
@@ -198,8 +198,8 @@ class SetAud:
     torchaudio.save(buffer, frmwav, ratsmp, format="wav")
     datreq = buffer.getvalue()
     datres = await MidClt.reqset(datreq, adrmid + MidClt.adrset)
-    keydat = datres["keydat"]
-    return (keydat,)
+    keymmd = datres["keymmd"]
+    return (keymmd,)
 
 #---------------------------------------------------------------------------
 # 音声を取得
@@ -209,7 +209,7 @@ class GetAud:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetAud.keydat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetAud.keymmd"]}),
       },
     }
   RETURN_TYPES = ("AUDIO",)
@@ -217,9 +217,9 @@ class GetAud:
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
-  async def anchor(self, keydat):
+  async def anchor(self, keymmd):
 
-    datreq = {"status": "0", "keydat": keydat}
+    datreq = {"status": "0", "keymmd": keymmd}
     datres = await MidClt.reqget(datreq, adrmid + MidClt.adrget)
     buffer = io.BytesIO(datres)
     frmwav, ratsmp = torchaudio.load(buffer)
@@ -242,15 +242,15 @@ class DlySet:
       },
     }
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
+  RETURN_NAMES = ("keymmd",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
   async def anchor(self, string, keyset):
     datreq = {"status": "0"}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrspp + keyset)
-    keydat = datres["keydat"]
-    return (keydat,)
+    keymmd = datres["keymmd"]
+    return (keymmd,)
 
 #---------------------------------------------------------------------------
 # データＩＤを受け取り／受信完了を通知（/gpsNNN ）……対になる処理：ローデータを引き渡し／準備ができたら（/gppNNN ）
@@ -260,7 +260,7 @@ class DlyGet:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["DlyGet.keydat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["DlyGet.keymmd"]}),
         "keyget": ("STRING", {"default": "000", "tooltip": dictip["DlyGet.keyget"]}),
       },
     }
@@ -269,7 +269,7 @@ class DlyGet:
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
-  async def anchor(self, keydat, keyget):
-    datreq = {"status": "0", "keydat": keydat}
+  async def anchor(self, keymmd, keyget):
+    datreq = {"status": "0", "keymmd": keymmd}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrgps + keyget)
     return ("",)

@@ -17,7 +17,7 @@ class SetDir:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetDir.keydat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetDir.keymmd"]}),
         "target": ("STRING", {"default": "/opt/strage/sample_001.bin", "tooltip": dictip["SetDir.target"]}),
       },
     }
@@ -26,8 +26,8 @@ class SetDir:
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setblb"
 
-  async def anchor(self, keydat, target):
-    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.OpeBlb.setdir", "target": target}
+  async def anchor(self, keymmd, target):
+    datreq = {"status": "0", "keymmd": keymmd, "keyprc": "xoxxox.OpeBlb.setdir", "target": target}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
     return ("",)
 
@@ -44,15 +44,15 @@ class GetDir:
       },
     }
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
+  RETURN_NAMES = ("keymmd",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setblb"
 
   async def anchor(self, string, target):
     datreq = {"status": "0", "keyprc": "xoxxox.OpeBlb.getdir", "target": target}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    keydat = datres["keydat"]
-    return (keydat,)
+    keymmd = datres["keymmd"]
+    return (keymmd,)
 
 #---------------------------------------------------------------------------
 # ファイルに格納（キーを元に）
@@ -62,7 +62,7 @@ class SetDis:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetDis.keydat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetDis.keymmd"]}),
         "folder": ("STRING", {"default": "/opt/strage", "tooltip": dictip["SetDis.folder"]}),
         "extdat": ("STRING", {"default": ".txt", "tooltip": dictip["SetDis.extdat"]}),
       },
@@ -72,8 +72,8 @@ class SetDis:
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setblb"
 
-  async def anchor(self, keydat, extdat, folder):
-    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.OpeBlb.setdis", "extdat": extdat, "folder": folder}
+  async def anchor(self, keymmd, extdat, folder):
+    datreq = {"status": "0", "keymmd": keymmd, "keyprc": "xoxxox.OpeBlb.setdis", "extdat": extdat, "folder": folder}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
     return ("",)
 
@@ -91,12 +91,12 @@ class GetDis:
       },
     }
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("keydat",)
+  RETURN_NAMES = ("keymmd",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setblb"
 
   async def anchor(self, string, folder, extdat):
     datreq = {"status": "0", "keyprc": "xoxxox.OpeBlb.getdis", "extdat": extdat, "folder": folder}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
-    keydat = datres["keydat"]
-    return (keydat,)
+    keymmd = datres["keymmd"]
+    return (keymmd,)

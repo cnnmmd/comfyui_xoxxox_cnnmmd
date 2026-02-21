@@ -85,7 +85,7 @@ class GenTxt:
     return (keydat, keyopt)
 
 #---------------------------------------------------------------------------
-# サウンドからテキストに変換（感情分析）
+# テキストからテキストに変換（感情分析）
 
 class CnvSen:
   @classmethod
@@ -104,6 +104,30 @@ class CnvSen:
 
   async def anchor(self, keydat, server, config):
     datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcSen.cnnsen", "server": dicsrv[server], "config": config}
+    datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
+    keydat = datres["keydat"]
+    return (keydat,)
+
+#---------------------------------------------------------------------------
+# テキストからテキストに変換（ＲＡＧ）
+
+class CnvRag:
+  @classmethod
+  def INPUT_TYPES(s):
+    return {
+      "required": {
+        "keydat": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvRag.keydat"]}),
+        "server": (diccnf["lstsen_nod"], {"default": diccnf["defsen_nod"], "tooltip": dictip["CnvRag.server"]}),
+        "config": (diccnf["lstsen_cnf"], {"default": diccnf["defsen_cnf"], "tooltip": dictip["CnvRag.config"]}),
+      },
+    }
+  RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("keydat",)
+  FUNCTION = "anchor"
+  CATEGORY = "xoxxox/settlk"
+
+  async def anchor(self, keydat, server, config):
+    datreq = {"status": "0", "keydat": keydat, "keyprc": "xoxxox.PrcRag.cnnrag", "server": dicsrv[server], "config": config}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
     keydat = datres["keydat"]
     return (keydat,)

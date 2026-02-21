@@ -21,16 +21,18 @@ class IniFlw:
   @classmethod
   def INPUT_TYPES(s):
     return {
-      "required": {
-        "random": ("INT", {"forceInput": True, "tooltip": dictip["IniFlw.random"]}),
-      },
+      "required": {},
     }
   RETURN_TYPES = ("STRING",)
   RETURN_NAMES = ("string",)
   FUNCTION = "anchor"
   CATEGORY = "xoxxox/setmid"
 
-  async def anchor(self, random):
+  @classmethod
+  def IS_CHANGED(s):
+    return float("nan")
+
+  async def anchor(self):
     datreq = {"status": "0"}
     datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrini)
     return ("",)

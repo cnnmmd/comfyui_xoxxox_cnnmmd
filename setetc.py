@@ -3,12 +3,17 @@
 
 from PIL import Image
 import torch
+from .lib.midclt import MidClt
 from .lib.shared import PrcCmf
+from .lib.params_cmf import PrmCmf
 from .lib.shared_img import CnvImg
 
 #---------------------------------------------------------------------------
 
 dictip = PrcCmf.gettip()
+adrmid = PrmCmf.adrmid
+dicsrv = PrcCmf.getsrv()
+diccnf = PrcCmf.getcmf()
 
 #---------------------------------------------------------------------------
 # 変換（テキストの一部を指定の文字列で置換する）
@@ -60,3 +65,28 @@ class TrnBak:
       lstimg.append(CnvImg.cnvtsr(pilcmp)[None,])
     tsrimg = torch.cat(lstimg)
     return (tsrimg,)
+
+#---------------------------------------------------------------------------
+# 各種のプログミング言語を実行する
+
+class PrcPrc:
+  @classmethod
+  def INPUT_TYPES(s):
+    return {
+      "required": {
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "server": (diccnf["lstprc_nod"], {"default": diccnf["defprc_nod"]}),
+        "config": (diccnf["lstprc_cnf"], {"default": diccnf["defprc_cnf"]}),
+      },
+    }
+  RETURN_TYPES = ("STRING", "STRING")
+  RETURN_NAMES = ("keymmd", "keyerr")
+  FUNCTION = "anchor"
+  CATEGORY = "xoxxox/setetc"
+
+  async def anchor(self, keymmd, server, config):
+    datreq = {"status": "0", "keymmd": keymmd, "keyprc": "xoxxox.PrcPrc.cnnprc", "server": dicsrv[server], "config": config}
+    datres = await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
+    keymmd = datres["key000"]
+    keyerr = datres["key001"]
+    return (keymmd, keyerr)

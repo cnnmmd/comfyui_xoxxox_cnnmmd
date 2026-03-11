@@ -1,0 +1,30 @@
+{
+  "Xoxxox_PrcPrc": {
+    "display_name": "Execute Program",
+    "description": "Execute selected programing language",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd (string)",
+        "tooltip": "Program code"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "Server name or address"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "Configration name"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "keymmd (string)",
+        "tooltip": "Standard output"
+      },
+      "1": {
+        "name": "keymmd (string)",
+        "tooltip": "Standard error output"
+      }
+    }
+  }
+}

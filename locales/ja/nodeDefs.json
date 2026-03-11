@@ -1,0 +1,30 @@
+{
+  "Xoxxox_PrcPrc": {
+    "display_name": "プログラムをうごかす",
+    "description": "選択したプログラミング言語を実行",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd (string)",
+        "tooltip": "プログラムのコード"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "サーバの名前またはアドレス"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "設定の名前"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "keymmd (string)",
+        "tooltip": "標準出力"
+      },
+      "1": {
+        "name": "keymmd (string)",
+        "tooltip": "標準エラー出力"
+      }
+    }
+  }
+}

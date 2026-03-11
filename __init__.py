@@ -1,5 +1,5 @@
 from .setcmm import LogTxt, LogNum, RunFlw
-from .setetc import RepTxt, TrnBak
+from .setetc import RepTxt, TrnBak, PrcPrc
 from .setmid import IniFlw, SetNil, PutTxt, SetTxt, GetTxt, SetImg, GetImg, SetAud, GetAud, DlySet, DlyGet
 from .setmem import SetMem, GetMem
 from .setblb import GetDir, SetDir, GetDis, SetDis
@@ -15,6 +15,7 @@ NODE_CLASS_MAPPINGS = {
 
   "Xoxxox_RepTxt": RepTxt,
   "Xoxxox_TrnBak": TrnBak,
+  "Xoxxox_PrcPrc": PrcPrc,
 
   "Xoxxox_IniFlw": IniFlw,
   "Xoxxox_SetNil": SetNil,

@@ -2,6 +2,7 @@
 # 参照
 
 from PIL import Image
+import re
 import torch
 from .lib.midclt import MidClt
 from .lib.shared import PrcCmf
@@ -35,6 +36,28 @@ class RepTxt:
 
   def anchor(self, txtbdy, txtmod, txtorg):
     txtres = txtbdy.replace(txtorg, txtmod)
+    return (txtres,)
+
+#---------------------------------------------------------------------------
+# 変換（テキストの一部を指定の文字列で抽出する）
+
+class GrpTxt:
+  @classmethod
+  def INPUT_TYPES(s):
+    return {
+      "required": {
+        "txtbdy": ("STRING", {"forceInput": True, "multiline": True}),
+        "txtorg": ("STRING", {"forceInput": False, "multiline": False, "default": ".*"}),
+      },
+    }
+  RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("txtres",)
+  FUNCTION = "anchor"
+  CATEGORY = "xoxxox/setetc"
+
+  def anchor(self, txtbdy, txtorg):
+    match = re.search(txtorg, txtbdy)
+    txtres = match.group(1) if match else ""
     return (txtres,)
 
 #---------------------------------------------------------------------------
@@ -90,3 +113,26 @@ class PrcPrc:
     keymmd = datres["key000"]
     keyerr = datres["key001"]
     return (keymmd, keyerr)
+
+#---------------------------------------------------------------------------
+# Ｘウィンドウサーバを起動する
+
+class PrcXws:
+  @classmethod
+  def INPUT_TYPES(s):
+    return {
+      "required": {
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "server": (diccnf["lstxws_nod"], {"default": diccnf["defxws_nod"]}),
+        "config": (diccnf["lstxws_cnf"], {"default": diccnf["defxws_cnf"]}),
+      },
+    }
+  OUTPUT_NODE = True
+  RETURN_TYPES = ()
+  FUNCTION = "anchor"
+  CATEGORY = "xoxxox/setetc"
+
+  async def anchor(self, keymmd, server, config):
+    datreq = {"status": "0", "keymmd": keymmd, "keyprc": "xoxxox.PrcXws.cnnprc", "server": dicsrv[server], "config": config}
+    await MidClt.reqprc(datreq, adrmid + MidClt.adrprc)
+    return ()

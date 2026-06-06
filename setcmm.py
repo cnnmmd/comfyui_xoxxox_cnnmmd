@@ -3,11 +3,6 @@
 
 import server
 import time
-from .lib.shared import PrcCmf
-
-#---------------------------------------------------------------------------
-
-dictip = PrcCmf.gettip()
 
 #---------------------------------------------------------------------------
 # 機能：入力をコンソールに出力（文字）
@@ -17,7 +12,7 @@ class LogTxt:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "txtreq": ("STRING", {"forceInput": True, "default": "", "tooltip": dictip["LogTxt.txtreq"]}),
+        "txtreq": ("STRING", {"forceInput": True, "default": ""}),
       },
     }
   OUTPUT_NODE = True
@@ -37,7 +32,7 @@ class LogNum:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "numreq": ("INT", {"forceInput": True, "default": 0, "tooltip": dictip["LogNum.numreq"]}),
+        "numreq": ("INT", {"forceInput": True, "default": 0}),
       },
     }
   OUTPUT_NODE = True
@@ -57,8 +52,8 @@ class RunFlw:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"forceInput": True, "default": "", "tooltip": dictip["RunFlw.string"]}),
-        "numsec": ("INT", {"default": 5, "tooltip": dictip["RunFlw.numsec"]}),
+        "string": ("STRING", {"forceInput": True, "default": ""}),
+        "numsec": ("INT", {"default": 5}),
       },
     }
   OUTPUT_NODE = True
@@ -70,3 +65,24 @@ class RunFlw:
     time.sleep(numsec)
     server.PromptServer.instance.send_sync("xoxxox_runflw", {})
     return ()
+
+#---------------------------------------------------------------------------
+# 機能：ワークフローを終了
+
+class EndFlw:
+  @classmethod
+  def INPUT_TYPES(s):
+    return {
+      "required": {
+        "string": ("STRING", {"forceInput": True, "default": ""}),
+      },
+    }
+  OUTPUT_NODE = True
+  RETURN_TYPES = ()
+  FUNCTION = "anchor"
+  CATEGORY = "xoxxox/setcmm"
+
+  def anchor(self, string):
+    pass
+    return ()
+  

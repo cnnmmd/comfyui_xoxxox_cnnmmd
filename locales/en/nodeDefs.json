@@ -1,4 +1,594 @@
 {
+  "Xoxxox_LogNum": {
+    "display_name": "Log Number",
+    "description": "",
+    "inputs": {
+      "numreq": {
+        "name": "numreq",
+        "tooltip": "Number"
+      }
+    }
+  },
+  "Xoxxox_LogTxt": {
+    "display_name": "Log Text",
+    "description": "",
+    "inputs": {
+      "txtreq": {
+        "name": "txtreq",
+        "tooltip": "Text string"
+      }
+    }
+  },
+  "Xoxxox_RunFlw": {
+    "display_name": "Restart Workflow",
+    "description": "",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "Arbitrary string (used for node connection / NOP)"
+      },
+      "numsec": {
+        "name": "numsec",
+        "tooltip": "Wait time until the next turn (in seconds)"
+      }
+    }
+  },
+  "Xoxxox_IniFlw": {
+    "display_name": "Initialize Relay State",
+    "description": "",
+    "inputs": {
+      "random": {
+        "name": "random",
+        "tooltip": "Random number (for turn continuation)"
+      }
+    }
+  },
+  "Xoxxox_SetNil": {
+    "display_name": "Send Empty Data",
+    "description": "",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "Arbitrary string (used for node connection / NOP)"
+      }
+    }
+  },
+  "Xoxxox_PutTxt": {
+    "display_name": "Input Text",
+    "description": "",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "Arbitrary string (used for node connection / NOP)"
+      },
+      "txtreq": {
+        "name": "txtreq",
+        "tooltip": "Text string"
+      }
+    }
+  },
+  "Xoxxox_SetTxt": {
+    "display_name": "Send Text",
+    "description": "",
+    "inputs": {
+      "txtreq": {
+        "name": "txtreq",
+        "tooltip": "Text string"
+      }
+    }
+  },
+  "Xoxxox_GetTxt": {
+    "display_name": "Receive Text",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: text)"
+      }
+    }
+  },
+  "Xoxxox_GetTxt_Opt": {
+    "display_name": "Receive Text",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: text)"
+      }
+    }
+  },
+  "Xoxxox_SetImg": {
+    "display_name": "Send Image",
+    "description": "",
+    "inputs": {
+      "imgtsr": {
+        "name": "imgtsr",
+        "tooltip": "Array of images (batch tensor, only the 0th element is processed)"
+      }
+    }
+  },
+  "Xoxxox_GetImg": {
+    "display_name": "Receive Image",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "inary data key (content: image)"
+      }
+    }
+  },
+  "Xoxxox_SetAud": {
+    "display_name": "Send Audio",
+    "description": "",
+    "inputs": {
+      "dicwav": {
+        "name": "dicwav",
+        "tooltip": "Sound (dictionary format)"
+      }
+    }
+  },
+  "Xoxxox_GetAud": {
+    "display_name": "Receive Audio",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: sound)"
+      }
+    }
+  },
+  "Xoxxox_DlySet": {
+    "display_name": "Poll (Send Data-Key when Ready)",
+    "description": "",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "Arbitrary string (used for node connection / NOP)"
+      },
+      "keyset": {
+        "name": "keyset",
+        "tooltip": "Relay server endpoint identifier"
+      }
+    }
+  },
+  "Xoxxox_DlyGet": {
+    "display_name": "Poll (Receive Data-Key when Ready)",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: arbitrary)"
+      },
+      "keyget": {
+        "name": "keyget",
+        "tooltip": "Relay server endpoint identifier"
+      }
+    }
+  },
+  "Xoxxox_SetMem": {
+    "display_name": "Write Memory",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: arbitrary)"
+      },
+      "keymem": {
+        "name": "keymem",
+        "tooltip": "Memory identifier"
+      }
+    }
+  },
+  "Xoxxox_GetMem": {
+    "display_name": "Read Memory",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: arbitrary)"
+      },
+      "keymem": {
+        "name": "keymem",
+        "tooltip": "Memory identifier"
+      }
+    }
+  },
+  "Xoxxox_GetDir": {
+    "display_name": "Read File",
+    "description": "",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "Arbitrary string (used for node connection / NOP)"
+      },
+      "target": {
+        "name": "target",
+        "tooltip": "File path"
+      }
+    }
+  },
+  "Xoxxox_SetDir": {
+    "display_name": "Write File",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: arbitrary)"
+      },
+      "target": {
+        "name": "target",
+        "tooltip": "File path"
+      }
+    }
+  },
+  "Xoxxox_GetDis": {
+    "display_name": "Auto-Read Files",
+    "description": "",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "Arbitrary string (used for node connection / NOP)"
+      },
+      "folder": {
+        "name": "folder",
+        "tooltip": "Folder path"
+      },
+      "extdat": {
+        "name": "extdat",
+        "tooltip": "File extension"
+      }
+    }
+  },
+  "Xoxxox_SetDis": {
+    "display_name": "Auto-Write Files",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: arbitrary)"
+      },
+      "folder": {
+        "name": "folder",
+        "tooltip": "Folder path"
+      },
+      "extdat": {
+        "name": "extdat",
+        "tooltip": "File extension"
+      }
+    }
+  },
+  "Xoxxox_CnvDat": {
+    "display_name": "Convert Data",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: data for conversion)"
+      },
+      "method": {
+        "name": "method",
+        "tooltip": "Data conversion method"
+      }
+    }
+  },
+  "Xoxxox_GenImg": {
+    "display_name": "Generate Image",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: text: positive prompt)"
+      },
+      "keyneg": {
+        "name": "keyneg",
+        "tooltip": "Binary data key (content: text: negative prompt)"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "Label of image generation server"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "Configuration file"
+      }
+    }
+  },
+  "Xoxxox_CnvVce": {
+    "display_name": "Synthesize Speech (TTS, ...)",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: text)"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "Label of speech synthesis (TTS) server"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "Configuration file"
+      }
+    }
+  },
+  "Xoxxox_CnvTxt": {
+    "display_name": "Transcribe Speech (STT, ...)",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: sound)"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "Label of speech recognition (STT) server"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "Configuration file"
+      }
+    }
+  },
+  "Xoxxox_GenTxt": {
+    "display_name": "Generate Text with Info (LLM, ...)",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: text)"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "Label of language generation (LLM) server"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "Configuration file"
+      }
+    }
+  },
+  "Xoxxox_CnvSen": {
+    "display_name": "Analyze Sentiment (SA, ER, ...)",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: text)"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "Label of sentiment analysis server"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "Configuration file"
+      }
+    }
+  },
+  "Xoxxox_SenTxt": {
+    "display_name": "Convert Emotion Label to Text",
+    "description": "",
+    "inputs": {
+      "txtreq": {
+        "name": "txtreq",
+        "tooltip": "Text string"
+      },
+      "sen000": {
+        "name": "sen000",
+        "tooltip": "Emotion Recognition result (0)"
+      },
+      "sen001": {
+        "name": "sen001",
+        "tooltip": "Emotion Recognition result (1)"
+      },
+      "sen002": {
+        "name": "sen002",
+        "tooltip": "Emotion Recognition result (2)"
+      },
+      "sen003": {
+        "name": "sen003",
+        "tooltip": "Emotion Recognition result (3)"
+      },
+      "sen004": {
+        "name": "sen004",
+        "tooltip": "Emotion Recognition result (4)"
+      },
+      "sen005": {
+        "name": "sen005",
+        "tooltip": "Emotion Recognition result (5)"
+      },
+      "sen006": {
+        "name": "sen006",
+        "tooltip": "Emotion Recognition result (6)"
+      },
+      "sen007": {
+        "name": "sen007",
+        "tooltip": "Emotion Recognition result (7)"
+      }
+    }
+  },
+  "Xoxxox_SenSlc": {
+    "display_name": "Select Emotion Label",
+    "description": "",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "Arbitrary string (used for node connection / NOP)"
+      },
+      "select": {
+        "name": "select",
+        "tooltip": "Emotion label (0 - 7)"
+      }
+    }
+  },
+  "Xoxxox_CnvRag": {
+    "display_name": "Search Vector Store",
+    "description": "",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "Binary data key (content: text)"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "Label of vector store server"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "Configuration file"
+      }
+    }
+  },
+  "Xoxxox_SndVce": {
+    "display_name": "Record and Send Audio",
+    "description": "",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "Arbitrary string (used for node connection / NOP)"
+      },
+      "srvmid": {
+        "name": "srvmid",
+        "tooltip": "Relay server label"
+      },
+      "pthsnd": {
+        "name": "pthsnd",
+        "tooltip": "Relay server endpoint path"
+      },
+      "thdvce": {
+        "name": "thdvce",
+        "tooltip": "Threshold for starting recording"
+      },
+      "mscend": {
+        "name": "mscend",
+        "tooltip": "Silence duration to determine end of recording (ms)"
+      }
+    }
+  },
+  "Xoxxox_RcvVce": {
+    "display_name": "Receive and Play Audio",
+    "description": "",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "Arbitrary string (used for node connection / NOP)"
+      },
+      "srvmid": {
+        "name": "srvmid",
+        "tooltip": "Relay server label"
+      },
+      "pthrcv": {
+        "name": "pthrcv",
+        "tooltip": "Relay server endpoint path"
+      }
+    }
+  },
+  "Xoxxox_SwtImg": {
+    "display_name": "Receive and Play Audio (Lip-Sync)",
+    "description": "",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "Arbitrary string (used for node connection / NOP)"
+      },
+      "srvmid": {
+        "name": "srvmid",
+        "tooltip": "Relay server label"
+      },
+      "srvweb": {
+        "name": "srvweb",
+        "tooltip": "Content server label"
+      },
+      "pthrcv": {
+        "name": "pthrcv",
+        "tooltip": "Relay server endpoint path"
+      },
+      "thdvce": {
+        "name": "thdvce",
+        "tooltip": "Audio threshold for switching images"
+      },
+      "pthswc": {
+        "name": "pthswc",
+        "tooltip": "Relay server endpoint path (when changing image identifier)"
+      },
+      "adrchr": {
+        "name": "adrchr",
+        "tooltip": "Image path pattern: image identifier (c) + difference (o)"
+      },
+      "imgchr": {
+        "name": "imgchr",
+        "tooltip": "Image identifier (input this item when changing identifier)"
+      },
+      ".arrimg": {
+        "name": "arrimg",
+        "tooltip": "Reference position on screen (left/right: l/r)"
+      },
+      "sclimg": {
+        "name": "sclimg",
+        "tooltip": "Scale on screen (relative to window)"
+      },
+      "poscox": {
+        "name": "poscox",
+        "tooltip": "Position on screen: horizontal (X)"
+      },
+      "poscoy": {
+        "name": "poscoy",
+        "tooltip": "Position on screen: vertical (Y)"
+      }
+    }
+  },
+  "Xoxxox_RepTxt": {
+    "display_name": "Replace Text",
+    "description": "",
+    "inputs": {
+      "txtbdy": {
+        "name": "txtbdy",
+        "tooltip": "Text string"
+      },
+      "txtmod": {
+        "name": "txtmod",
+        "tooltip": "Replacement string"
+      },
+      "txtorg": {
+        "name": "txtorg",
+        "tooltip": "String indicating the target to be replaced"
+      }
+    }
+  },
+  "Xoxxox_GrpTxt": {
+    "display_name": "Xoxxox_GrpTxt",
+    "description": "",
+    "inputs": {
+      "txtbdy": {
+        "name": "txtbdy",
+        "tooltip": "txtbdy"
+      },
+      "txtorg": {
+        "name": "txtorg",
+        "tooltip": "txtorg"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "txtres",
+        "tooltip": "txtres"
+      }
+    }
+  },
+  "Xoxxox_TrnBak": {
+    "display_name": "Convert Mask to Alpha",
+    "description": "",
+    "inputs": {
+      "tsrimg": {
+        "name": "tsrimg",
+        "tooltip": "Array of images (batch tensor)"
+      },
+      "tsrmsk": {
+        "name": "tsrmsk",
+        "tooltip": "Array of image masks (batch tensor)"
+      }
+    }
+  },
   "Xoxxox_PrcPrc": {
     "display_name": "Execute Program",
     "description": "Execute selected programing language",
@@ -26,5 +616,9 @@
         "tooltip": "Standard error output"
       }
     }
+  },
+  "Xoxxox_PrcXws": {
+    "display_name": "Xoxxox_PrcXws",
+    "description": ""
   }
 }

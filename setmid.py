@@ -5,13 +5,11 @@ from PIL import Image
 import torch
 import torchaudio
 from .lib.midclt import MidClt
-from .lib.shared import PrcCmf
 from .lib.shared_img import CnvImg
 from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
-dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 
 #---------------------------------------------------------------------------
@@ -45,7 +43,7 @@ class SetNil:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetNil.string"]}),
+        "string": ("STRING", {"default": "", "forceInput": True}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -67,8 +65,8 @@ class PutTxt:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["PutTxt.string"]}),
-        "txtreq": ("STRING", {"default": "", "multiline": True, "tooltip": dictip["PutTxt.txtreq"]}),
+        "string": ("STRING", {"default": "", "forceInput": True}),
+        "txtreq": ("STRING", {"default": "", "multiline": True}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -88,7 +86,7 @@ class SetTxt:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "txtreq": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetTxt.txtreq"]}),
+        "txtreq": ("STRING", {"default": "", "forceInput": True}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -110,7 +108,7 @@ class GetTxt:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetTxt.keymmd"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -132,7 +130,7 @@ class SetImg:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "imgtsr": ("IMAGE",{"tooltip": dictip["SetImg.imgtsr"]})
+        "imgtsr": ("IMAGE")
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -157,7 +155,7 @@ class GetImg:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetImg.keymmd"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
       },
     }
   RETURN_TYPES = ("IMAGE",)
@@ -183,7 +181,7 @@ class SetAud:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "dicwav": ("AUDIO",{"tooltip": dictip["SetAud.dicwav"]})
+        "dicwav": ("AUDIO")
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -209,7 +207,7 @@ class GetAud:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetAud.keymmd"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
       },
     }
   RETURN_TYPES = ("AUDIO",)
@@ -237,8 +235,8 @@ class DlySet:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["DlySet.string"]}),
-        "keyset": ("STRING", {"default": "000", "tooltip": dictip["DlyGet.keyget"]}),
+        "string": ("STRING", {"default": "", "forceInput": True}),
+        "keyset": ("STRING", {"default": "000"}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -260,8 +258,8 @@ class DlyGet:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["DlyGet.keymmd"]}),
-        "keyget": ("STRING", {"default": "000", "tooltip": dictip["DlyGet.keyget"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "keyget": ("STRING", {"default": "000"}),
       },
     }
   RETURN_TYPES = ("STRING",)

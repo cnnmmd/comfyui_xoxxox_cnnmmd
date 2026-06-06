@@ -6,7 +6,6 @@ from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
-dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 dicsrv = PrcCmf.getsrv()
 diccnf = PrcCmf.getcmf()
@@ -19,9 +18,9 @@ class CnvTxt:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvTxt.keymmd"]}),
-        "server": (diccnf["lststt_nod"], {"default": diccnf["defstt_nod"], "tooltip": dictip["CnvTxt.server"]}),
-        "config": (diccnf["lststt_cnf"], {"default": diccnf["defstt_cnf"], "tooltip": dictip["CnvTxt.config"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "server": (diccnf["lststt_nod"], {"default": diccnf["defstt_nod"]}),
+        "config": (diccnf["lststt_cnf"], {"default": diccnf["defstt_cnf"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -43,9 +42,9 @@ class CnvVce:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvVce.keymmd"]}),
-        "server": (diccnf["lsttts_nod"], {"default": diccnf["deftts_nod"], "tooltip": dictip["CnvVce.server"]}),
-        "config": (diccnf["lsttts_cnf"], {"default": diccnf["deftts_cnf"], "tooltip": dictip["CnvVce.config"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "server": (diccnf["lsttts_nod"], {"default": diccnf["deftts_nod"]}),
+        "config": (diccnf["lsttts_cnf"], {"default": diccnf["deftts_cnf"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -67,9 +66,9 @@ class GenTxt:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GenTxt.keymmd"]}),
-        "server": (diccnf["lstttt_nod"], {"default": diccnf["defttt_nod"], "tooltip": dictip["GenTxt.server"]}),
-        "config": (diccnf["lstttt_cnf"], {"default": diccnf["defttt_cnf"], "tooltip": dictip["GenTxt.config"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "server": (diccnf["lstttt_nod"], {"default": diccnf["defttt_nod"]}),
+        "config": (diccnf["lstttt_cnf"], {"default": diccnf["defttt_cnf"]}),
       },
     }
   RETURN_TYPES = ("STRING", "STRING")
@@ -92,9 +91,9 @@ class CnvSen:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvSen.keymmd"]}),
-        "server": (diccnf["lstsen_nod"], {"default": diccnf["defsen_nod"], "tooltip": dictip["CnvSen.server"]}),
-        "config": (diccnf["lstsen_cnf"], {"default": diccnf["defsen_cnf"], "tooltip": dictip["CnvSen.config"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "server": (diccnf["lstsen_nod"], {"default": diccnf["defsen_nod"]}),
+        "config": (diccnf["lstsen_cnf"], {"default": diccnf["defsen_cnf"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -116,9 +115,9 @@ class CnvRag:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvRag.keymmd"]}),
-        "server": (diccnf["lstsen_nod"], {"default": diccnf["defsen_nod"], "tooltip": dictip["CnvRag.server"]}),
-        "config": (diccnf["lstsen_cnf"], {"default": diccnf["defsen_cnf"], "tooltip": dictip["CnvRag.config"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "server": (diccnf["lstsen_nod"], {"default": diccnf["defsen_nod"]}),
+        "config": (diccnf["lstsen_cnf"], {"default": diccnf["defsen_cnf"]}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -148,15 +147,15 @@ class SenTxt:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "txtreq": ("STRING", {"forceInput": True, "tooltip": dictip["SenTxt.txtreq"]}),
-        "sen000": ("STRING", {"forceInput": False, "multiline": False, "default": "joy", "tooltip": dictip["SenTxt.sen000"]}),
-        "sen001": ("STRING", {"forceInput": False, "multiline": False, "default": "sadness", "tooltip": dictip["SenTxt.sen001"]}),
-        "sen002": ("STRING", {"forceInput": False, "multiline": False, "default": "anticipation", "tooltip": dictip["SenTxt.sen002"]}),
-        "sen003": ("STRING", {"forceInput": False, "multiline": False, "default": "surprise", "tooltip": dictip["SenTxt.sen003"]}),
-        "sen004": ("STRING", {"forceInput": False, "multiline": False, "default": "anger", "tooltip": dictip["SenTxt.sen004"]}),
-        "sen005": ("STRING", {"forceInput": False, "multiline": False, "default": "fear", "tooltip": dictip["SenTxt.sen005"]}),
-        "sen006": ("STRING", {"forceInput": False, "multiline": False, "default": "disgust", "tooltip": dictip["SenTxt.sen006"]}),
-        "sen007": ("STRING", {"forceInput": False, "multiline": False, "default": "trust", "tooltip": dictip["SenTxt.sen007"]}),
+        "txtreq": ("STRING", {"forceInput": True}),
+        "sen000": ("STRING", {"forceInput": False, "multiline": False, "default": "joy"}),
+        "sen001": ("STRING", {"forceInput": False, "multiline": False, "default": "sadness"}),
+        "sen002": ("STRING", {"forceInput": False, "multiline": False, "default": "anticipation"}),
+        "sen003": ("STRING", {"forceInput": False, "multiline": False, "default": "surprise"}),
+        "sen004": ("STRING", {"forceInput": False, "multiline": False, "default": "anger"}),
+        "sen005": ("STRING", {"forceInput": False, "multiline": False, "default": "fear"}),
+        "sen006": ("STRING", {"forceInput": False, "multiline": False, "default": "disgust"}),
+        "sen007": ("STRING", {"forceInput": False, "multiline": False, "default": "trust"}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -191,8 +190,8 @@ class SenSlc:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SenSlc.string"]}),
-        "select": (["0", "1", "2", "3", "4", "5", "6", "7"], {"default": "0", "tooltip": dictip["SenSlc.select"]}),
+        "string": ("STRING", {"default": "", "forceInput": True}),
+        "select": (["0", "1", "2", "3", "4", "5", "6", "7"], {"default": "0"}),
       },
     }
   RETURN_TYPES = ("STRING",)

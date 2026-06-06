@@ -1,12 +1,10 @@
 #---------------------------------------------------------------------------
 
 from .lib.midclt import MidClt
-from .lib.shared import PrcCmf
 from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
-dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 
 #---------------------------------------------------------------------------
@@ -17,8 +15,8 @@ class SetDir:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetDir.keymmd"]}),
-        "target": ("STRING", {"default": "/opt/strage/sample_001.bin", "tooltip": dictip["SetDir.target"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "target": ("STRING", {"default": "/opt/strage/sample_001.bin"}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -39,8 +37,8 @@ class GetDir:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetDir.string"]}),
-        "target": ("STRING", {"default": "/opt/common/web/xoxxox/doc/sample_001.bin", "tooltip": dictip["GetDir.target"]}),
+        "string": ("STRING", {"default": "", "forceInput": True}),
+        "target": ("STRING", {"default": "/opt/common/web/xoxxox/doc/sample_001.bin"}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -62,9 +60,9 @@ class SetDis:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetDis.keymmd"]}),
-        "folder": ("STRING", {"default": "/opt/strage", "tooltip": dictip["SetDis.folder"]}),
-        "extdat": ("STRING", {"default": ".txt", "tooltip": dictip["SetDis.extdat"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "folder": ("STRING", {"default": "/opt/strage"}),
+        "extdat": ("STRING", {"default": ".txt"}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -85,9 +83,9 @@ class GetDis:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "string": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetDis.string"]}),
-        "folder": ("STRING", {"default": "/opt/common/web/xoxxox/doc", "tooltip": dictip["GetDis.folder"]}),
-        "extdat": ("STRING", {"default": ".txt", "tooltip": dictip["GetDis.extdat"]}),
+        "string": ("STRING", {"default": "", "forceInput": True}),
+        "folder": ("STRING", {"default": "/opt/common/web/xoxxox/doc"}),
+        "extdat": ("STRING", {"default": ".txt"}),
       },
     }
   RETURN_TYPES = ("STRING",)

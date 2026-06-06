@@ -1,4 +1,604 @@
 {
+  "Xoxxox_LogNum": {
+    "display_name": "かずをコンソールにわたす",
+    "description": "入力をコンソールに出力する（ナンバー向け）",
+    "inputs": {
+      "numreq": {
+        "name": "numreq",
+        "tooltip": "ナンバー"
+      }
+    }
+  },
+  "Xoxxox_LogTxt": {
+    "display_name": "もじをコンソールにわたす",
+    "description": "入力をコンソールに出力する（テキスト向け）",
+    "inputs": {
+      "txtreq": {
+        "name": "txtreq",
+        "tooltip": "テキスト"
+      }
+    }
+  },
+  "Xoxxox_RunFlw": {
+    "display_name": "くりかえす",
+    "description": "ワークフローを再度実行するーークエリが終了した時点（最初のターン）で、始点のノードに戻り、クエリ（次のターン）を再開する",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "任意の文字列（ノード接続のため／NOP）"
+      },
+      "numsec": {
+        "name": "numsec",
+        "tooltip": "次のターンまでの待ち時間（秒数）"
+      }
+    }
+  },
+  "Xoxxox_EndFlw": {
+    "display_name": "おわらせる",
+    "description": "ワークフローを終了する",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "任意の文字列（ノード接続のため／NOP）"
+      }
+    }
+  },
+  "Xoxxox_IniFlw": {
+    "display_name": "はじめる",
+    "description": "中継サーバの状態を初期化する（ランダムな整数を受け取り、クエリを開始する）ーーただし、メモリとして定義されたリソースの状態は残す",
+    "inputs": {
+      "random": {
+        "name": "random",
+        "tooltip": "ランダムなナンバー（ターン継続のため）"
+      }
+    }
+  },
+  "Xoxxox_SetNil": {
+    "display_name": "からのもじをわたす",
+    "description": "空文字（空データ）を中継サーバに送信する",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "任意の文字列（ノード接続のため／NOP）"
+      }
+    }
+  },
+  "Xoxxox_PutTxt": {
+    "display_name": "もじをかく",
+    "description": "テキストを画面（ノードの入力欄）から入力する",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "任意の文字列（ノード接続のため／NOP）"
+      },
+      "txtreq": {
+        "name": "txtreq",
+        "tooltip": "テキスト"
+      }
+    }
+  },
+  "Xoxxox_SetTxt": {
+    "display_name": "もじをおくる",
+    "description": "テキストを中継サーバに送信する",
+    "inputs": {
+      "txtreq": {
+        "name": "txtreq",
+        "tooltip": "テキスト"
+      }
+    }
+  },
+  "Xoxxox_GetTxt": {
+    "display_name": "もじをとりだす",
+    "description": "テキストを中継サーバから取得する",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：テキスト）"
+      }
+    }
+  },
+  "Xoxxox_GetTxt_Opt": {
+    "display_name": "もじをとりだす",
+    "description": "テキストを中継サーバから取得する",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：テキスト）"
+      }
+    }
+  },
+  "Xoxxox_SetImg": {
+    "display_name": "えをおくる",
+    "description": "イメージを中継サーバに送信する（ただし送信できる画像は、バッチの配列（テンソル）中の０番目の１コのみ）",
+    "inputs": {
+      "imgtsr": {
+        "name": "imgtsr",
+        "tooltip": "イメージの配列（バッチテンソル）※ただし０番目のみ処理"
+      }
+    }
+  },
+  "Xoxxox_GetImg": {
+    "display_name": "えをとりだす",
+    "description": "イメージを中継サーバから取得する（ただし取得できる画像は１コのみで、バッチの配列（テンソル）の０番目に置かれる）",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：イメージ）"
+      }
+    }
+  },
+  "Xoxxox_SetAud": {
+    "display_name": "おとをおくる",
+    "description": "サウンドを中継サーバに送信する（サウンドの形式：WAV）",
+    "inputs": {
+      "dicwav": {
+        "name": "dicwav",
+        "tooltip": "サウンド（辞書形式）"
+      }
+    }
+  },
+  "Xoxxox_GetAud": {
+    "display_name": "おとをとりだす",
+    "description": "サウンドを中継サーバから取得する（サウンドの形式：WAV）",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：サウンド）"
+      }
+    }
+  },
+  "Xoxxox_DlySet": {
+    "display_name": "アプリからのデータをまつ",
+    "description": "ポーリング：準備ができたら、データキーを引き渡す（/sppNNN）……対になる処理：ローデータを受け取り、受信完了を通知する（/spsNNN）",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "任意の文字列（ノード接続のため／NOP）"
+      },
+      "keyset": {
+        "name": "keyset",
+        "tooltip": "中継サーバのエンドポイント識別子"
+      }
+    }
+  },
+  "Xoxxox_DlyGet": {
+    "display_name": "データがきたらアプリにおくる",
+    "description": "ポーリング：データキーを受け取り、受信完了を通知する（/gpsNNN）……対になる処理：準備ができたら、ローデータを引き渡す（/gppNNN）",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：任意）"
+      },
+      "keyget": {
+        "name": "keyget",
+        "tooltip": "中継サーバのエンドポイント識別子"
+      }
+    }
+  },
+  "Xoxxox_SetMem": {
+    "display_name": "メモリにかく",
+    "description": "データをメモリに書き込む（メモリのデータは、全ターンで保持される）",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "イナリデータのキー（内容：任意）"
+      },
+      "keymem": {
+        "name": "keymem",
+        "tooltip": "メモリの識別子"
+      }
+    }
+  },
+  "Xoxxox_GetMem": {
+    "display_name": "メモリからよむ",
+    "description": "データをメモリから読み出す（メモリのデータは、全ターンで保持される）",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：任意）"
+      },
+      "keymem": {
+        "name": "keymem",
+        "tooltip": "メモリの識別子"
+      }
+    }
+  },
+  "Xoxxox_GetDir": {
+    "display_name": "ファイルからよむ",
+    "description": "データをファイルから読み出す",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "任意の文字列（ノード接続のため／NOP）"
+      },
+      "target": {
+        "name": "target",
+        "tooltip": "ファイルのパス"
+      }
+    }
+  },
+  "Xoxxox_SetDir": {
+    "display_name": "ファイルにかく",
+    "description": "データをファイルに書き込む",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：任意）"
+      },
+      "target": {
+        "name": "target",
+        "tooltip": "ファイルのパス"
+      }
+    }
+  },
+  "Xoxxox_GetDis": {
+    "display_name": "ファイルからよむ／いっぺんに",
+    "description": "ファイルをフォルダから、順次（ターンごとに）読み出す",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "任意の文字列（ノード接続のため／NOP）"
+      },
+      "folder": {
+        "name": "folder",
+        "tooltip": "フォルダのパス"
+      },
+      "extdat": {
+        "name": "extdat",
+        "tooltip": "ファイルの拡張子"
+      }
+    }
+  },
+  "Xoxxox_SetDis": {
+    "display_name": "ファイルにかく／いっぺんに",
+    "description": "データをファイルに書き込む（ファイル名は自動生成ーーデータキーから）",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：任意）"
+      },
+      "folder": {
+        "name": "folder",
+        "tooltip": "フォルダのパス"
+      },
+      "extdat": {
+        "name": "extdat",
+        "tooltip": "ファイルの拡張子"
+      }
+    }
+  },
+  "Xoxxox_CnvDat": {
+    "display_name": "データのかたちをかえる",
+    "description": "データを変換する（音声形式の変換、画像形式の変換）",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：変換操作に沿ったもの）"
+      },
+      "method": {
+        "name": "method",
+        "tooltip": "データ変換の方法"
+      }
+    }
+  },
+  "Xoxxox_GenImg": {
+    "display_name": "えをえがく",
+    "description": "画像を生成する",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：テキスト：ポジティブ・プロンプト）"
+      },
+      "keyneg": {
+        "name": "keyneg",
+        "tooltip": "バイナリデータのキー（内容：テキスト：ネガティブ・プロンプト）"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "画像生成サーバなどのラベル"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "設定ファイル"
+      }
+    }
+  },
+  "Xoxxox_CnvVce": {
+    "display_name": "もじをこえにする",
+    "description": "テキストからサウンドに変換する（TTS, ...）",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：テキスト）"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "音声合成（TTS）サーバなどのラベル"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "設定ファイル"
+      }
+    }
+  },
+  "Xoxxox_CnvTxt": {
+    "display_name": "こえをもじにする",
+    "description": "サウンドからテキストに変換する（STT, ...）",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：サウンド）"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "音声認識（STT）サーバなどのラベル"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "設定ファイル"
+      }
+    }
+  },
+  "Xoxxox_GenTxt": {
+    "display_name": "もじではなす",
+    "description": "テキストからテキストを生成する（LLM, ...）",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：テキスト）"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "言語生成（LLM）サーバなどのラベル"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "設定ファイル"
+      }
+    }
+  },
+  "Xoxxox_CnvSen": {
+    "display_name": "きもちをかずにする",
+    "description": "テキストの感情分析の結果を出力する（出力は、内容がナンバーのテキスト）",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：テキスト）"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "感情分析（SA/ER）サーバなどのラベル"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "設定ファイル"
+      }
+    }
+  },
+  "Xoxxox_SenTxt": {
+    "display_name": "きもちのかずをもじにする",
+    "description": "感情分析の結果（内容がナンバーのテキスト）を、任意のテキストに変換する",
+    "inputs": {
+      "txtreq": {
+        "name": "txtreq",
+        "tooltip": "テキスト"
+      },
+      "sen000": {
+        "name": "sen000",
+        "tooltip": "感情分析の結果（0）"
+      },
+      "sen001": {
+        "name": "sen001",
+        "tooltip": "感情分析の結果（1）"
+      },
+      "sen002": {
+        "name": "sen002",
+        "tooltip": "感情分析の結果（2）"
+      },
+      "sen003": {
+        "name": "sen003",
+        "tooltip": "感情分析の結果（3）"
+      },
+      "sen004": {
+        "name": "sen004",
+        "tooltip": "感情分析の結果（4）"
+      },
+      "sen005": {
+        "name": "sen005",
+        "tooltip": "感情分析の結果（5）"
+      },
+      "sen006": {
+        "name": "sen006",
+        "tooltip": "感情分析の結果（6）"
+      },
+      "sen007": {
+        "name": "sen007",
+        "tooltip": "感情分析の結果（7）"
+      }
+    }
+  },
+  "Xoxxox_SenSlc": {
+    "display_name": "きもちのかずをわたす",
+    "description": "感情分析の数値を、セレクタで出力する",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "任意の文字列（ノード接続のため／NOP）"
+      },
+      "select": {
+        "name": "select",
+        "tooltip": "感情分析の数値（0 - 7）"
+      }
+    }
+  },
+  "Xoxxox_CnvRag": {
+    "display_name": "ベクターストアをしらべる",
+    "description": "ファイル型のベクターストア（RAG）を検索し、合致したテキスト群を返す",
+    "inputs": {
+      "keymmd": {
+        "name": "keymmd",
+        "tooltip": "バイナリデータのキー（内容：テキスト）"
+      },
+      "server": {
+        "name": "server",
+        "tooltip": "ベクターストア・サーバのラベル"
+      },
+      "config": {
+        "name": "config",
+        "tooltip": "設定ファイル"
+      }
+    }
+  },
+  "Xoxxox_SndVce": {
+    "display_name": "アプリ：こえをおくる",
+    "description": "音声を録音〜送信する",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "任意の文字列（ノード接続のため／NOP）"
+      },
+      "srvmid": {
+        "name": "srvmid",
+        "tooltip": "中継サーバのラベル"
+      },
+      "pthsnd": {
+        "name": "pthsnd",
+        "tooltip": "中継サーバのエンドポイント・パス"
+      },
+      "thdvce": {
+        "name": "thdvce",
+        "tooltip": "録音開始の閾値"
+      },
+      "mscend": {
+        "name": "mscend",
+        "tooltip": "録音終了を判定する沈黙の長さ（ミリ秒）"
+      }
+    }
+  },
+  "Xoxxox_RcvVce": {
+    "display_name": "アプリ：こえをだす",
+    "description": "音声を受信〜再生する",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "任意の文字列（ノード接続のため／NOP）"
+      },
+      "srvmid": {
+        "name": "srvmid",
+        "tooltip": "中継サーバのラベル"
+      },
+      "pthrcv": {
+        "name": "pthrcv",
+        "tooltip": "中継サーバのエンドポイント・パス"
+      }
+    }
+  },
+  "Xoxxox_SwtImg": {
+    "display_name": "アプリ：こえをだす／くちをうごかす",
+    "description": "音声を受信〜再生する（キャラ画像の簡易なアニメ表現可）",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "任意の文字列（ノード接続のため／NOP）"
+      },
+      "srvmid": {
+        "name": "srvmid",
+        "tooltip": "中継サーバのラベル"
+      },
+      "srvweb": {
+        "name": "srvweb",
+        "tooltip": "コンテンツサーバのラベル"
+      },
+      "pthrcv": {
+        "name": "pthrcv",
+        "tooltip": "中継サーバのエンドポイントのパス"
+      },
+      "thdvce": {
+        "name": "thdvce",
+        "tooltip": "画像を切り替えるための、音声の大きさの閾値"
+      },
+      "pthswc": {
+        "name": "pthswc",
+        "tooltip": "中継サーバのエンドポイント・パス（画像の識別子を変える場合）"
+      },
+      "adrchr": {
+        "name": "adrchr",
+        "tooltip": "画像のパスのパターン：画像の識別子（c）＋差分（o））"
+      },
+      "imgchr": {
+        "name": "imgchr",
+        "tooltip": "画像の識別子（識別子を変える場合、この項目を入力にする）"
+      },
+      ".arrimg": {
+        "name": "arrimg",
+        "tooltip": "画面上の基準位置（左／右：l/r）"
+      },
+      "sclimg": {
+        "name": "sclimg",
+        "tooltip": "画面上のスケール（ウィンドウに対する）"
+      },
+      "poscox": {
+        "name": "poscox",
+        "tooltip": "画面上の位置：横（X）"
+      },
+      "poscoy": {
+        "name": "poscoy",
+        "tooltip": "画面上の位置：縦（Y）"
+      }
+    }
+  },
+  "Xoxxox_RepTxt": {
+    "display_name": "もじをおきかえる",
+    "description": "テキストの一部を、指定のテキストで置換する",
+    "inputs": {
+      "txtbdy": {
+        "name": "txtbdy",
+        "tooltip": "テキスト"
+      },
+      "txtmod": {
+        "name": "txtmod",
+        "tooltip": "置換する文字列"
+      },
+      "txtorg": {
+        "name": "txtorg",
+        "tooltip": "置換対象を示す文字列"
+      }
+    }
+  },
+  "Xoxxox_GrpTxt": {
+    "display_name": "もじをぬきだす",
+    "description": "テキストの一部を、指定の正規表現で抽出する",
+    "inputs": {
+      "txtbdy": {
+        "name": "txtbdy",
+        "tooltip": "txtbdy"
+      },
+      "txtorg": {
+        "name": "txtorg",
+        "tooltip": "txtorg"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "txtres",
+        "tooltip": "txtres"
+      }
+    }
+  },
+  "Xoxxox_TrnBak": {
+    "display_name": "けしきをかえる",
+    "description": "画像のボディとマスクを受け取り、マスクを透過画像（アルファ）に変換する",
+    "inputs": {
+      "tsrimg": {
+        "name": "tsrimg",
+        "tooltip": "イメージの配列（バッチテンソル）"
+      },
+      "tsrmsk": {
+        "name": "tsrmsk",
+        "tooltip": "イメージのマスクの配列（バッチテンソル）"
+      }
+    }
+  },
   "Xoxxox_PrcPrc": {
     "display_name": "プログラムをうごかす",
     "description": "選択したプログラミング言語を実行",
@@ -26,5 +626,9 @@
         "tooltip": "標準エラー出力"
       }
     }
+  },
+  "Xoxxox_PrcXws": {
+    "display_name": "Ｘウィンドウでうごかす",
+    "description": "Ｘウィンドウ・サーバから、指定のＸクライアントを実行する"
   }
 }

@@ -1,12 +1,10 @@
 #---------------------------------------------------------------------------
 
 from .lib.midclt import MidClt
-from .lib.shared import PrcCmf
 from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
-dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 
 #---------------------------------------------------------------------------
@@ -17,8 +15,8 @@ class SetMem:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["SetMem.keymmd"]}),
-        "keymem": ("STRING", {"default": "mem000", "tooltip": dictip["SetMem.keymem"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "keymem": ("STRING", {"default": "mem000"}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -40,8 +38,8 @@ class GetMem:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GetMem.keymmd"]}),
-        "keymem": ("STRING", {"default": "mem000", "tooltip": dictip["GetMem.keymem"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "keymem": ("STRING", {"default": "mem000"}),
       },
     }
   RETURN_TYPES = ("STRING",)

@@ -11,7 +11,6 @@ from .lib.shared_img import CnvImg
 
 #---------------------------------------------------------------------------
 
-dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 dicsrv = PrcCmf.getsrv()
 diccnf = PrcCmf.getcmf()
@@ -24,9 +23,9 @@ class RepTxt:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "txtbdy": ("STRING", {"forceInput": True, "multiline": True, "tooltip": dictip["RepTxt.txtbdy"]}),
-        "txtmod": ("STRING", {"forceInput": True, "multiline": True, "tooltip": dictip["RepTxt.txtmod"]}),
-        "txtorg": ("STRING", {"forceInput": False, "multiline": False, "default": "<s>", "tooltip": dictip["RepTxt.txtorg"]}),
+        "txtbdy": ("STRING", {"forceInput": True, "multiline": True}),
+        "txtmod": ("STRING", {"forceInput": True, "multiline": True}),
+        "txtorg": ("STRING", {"forceInput": False, "multiline": False, "default": "<s>"}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -68,8 +67,8 @@ class TrnBak:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "tsrimg": ("IMAGE",{"tooltip": dictip["TrnBak.tsrimg"]}),
-        "tsrmsk": ("MASK",{"tooltip": dictip["TrnBak.tsrmsk"]}),
+        "tsrimg": ("IMAGE"),
+        "tsrmsk": ("MASK"),
       },
     }
   RETURN_TYPES = ("IMAGE",)

@@ -6,7 +6,6 @@ from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
-dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 diccnf = PrcCmf.getcmf()
 
@@ -18,8 +17,8 @@ class CnvDat:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["CnvDat.keymmd"]}),
-        "method": (diccnf["lstcnv_dat"], {"default": diccnf["defcnv_dat"], "tooltip": dictip["CnvDat.method"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "method": (diccnf["lstcnv_dat"], {"default": diccnf["defcnv_dat"]}),
       },
     }
   RETURN_TYPES = ("STRING",)

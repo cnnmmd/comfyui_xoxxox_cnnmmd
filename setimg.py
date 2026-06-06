@@ -6,7 +6,6 @@ from .lib.params_cmf import PrmCmf
 
 #---------------------------------------------------------------------------
 
-dictip = PrcCmf.gettip()
 adrmid = PrmCmf.adrmid
 dicsrv = PrcCmf.getsrv()
 diccnf = PrcCmf.getcmf()
@@ -19,10 +18,10 @@ class GenImg:
   def INPUT_TYPES(s):
     return {
       "required": {
-        "keymmd": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GenImg.keymmd"]}),
-        "keyneg": ("STRING", {"default": "", "forceInput": True, "tooltip": dictip["GenImg.keyneg"]}),
-        "server": (diccnf["lstimg_nod"], {"default": diccnf["defimg_nod"], "tooltip": dictip["GenImg.server"]}),
-        "config": (diccnf["lstimg_cnf"], {"default": diccnf["defimg_cnf"], "tooltip": dictip["GenImg.config"]}),
+        "keymmd": ("STRING", {"default": "", "forceInput": True}),
+        "keyneg": ("STRING", {"default": "", "forceInput": True}),
+        "server": (diccnf["lstimg_nod"], {"default": diccnf["defimg_nod"]}),
+        "config": (diccnf["lstimg_cnf"], {"default": diccnf["defimg_cnf"]}),
       },
     }
   RETURN_TYPES = ("STRING",)

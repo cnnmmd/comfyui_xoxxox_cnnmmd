@@ -33,6 +33,16 @@
       }
     }
   },
+  "Xoxxox_EndFlw": {
+    "display_name": "Xoxxox_EndFlw",
+    "description": "",
+    "inputs": {
+      "string": {
+        "name": "string",
+        "tooltip": "Arbitrary string (used for node connection / NOP)"
+      }
+    }
+  },
   "Xoxxox_IniFlw": {
     "display_name": "Initialize Relay State",
     "description": "",

@@ -20,7 +20,7 @@
     }
   },
   "Xoxxox_RunFlw": {
-    "display_name": "くりかえす",
+    "display_name": "はじめにもどる",
     "description": "ワークフローを再度実行するーークエリが終了した時点（最初のターン）で、始点のノードに戻り、クエリ（次のターン）を再開する",
     "inputs": {
       "string": {
@@ -34,7 +34,7 @@
     }
   },
   "Xoxxox_EndFlw": {
-    "display_name": "おわらせる",
+    "display_name": "おわり",
     "description": "ワークフローを終了する",
     "inputs": {
       "string": {
@@ -44,7 +44,7 @@
     }
   },
   "Xoxxox_IniFlw": {
-    "display_name": "はじめる",
+    "display_name": "はじめ",
     "description": "中継サーバの状態を初期化する（ランダムな整数を受け取り、クエリを開始する）ーーただし、メモリとして定義されたリソースの状態は残す",
     "inputs": {
       "random": {

@@ -162,7 +162,7 @@
     }
   },
   "Xoxxox_DlyGet": {
-    "display_name": "データがきたらアプリにおくる",
+    "display_name": "データがきたらアプリにみせる",
     "description": "ポーリング：データキーを受け取り、受信完了を通知する（/gpsNNN）……対になる処理：準備ができたら、ローデータを引き渡す（/gppNNN）",
     "inputs": {
       "keymmd": {

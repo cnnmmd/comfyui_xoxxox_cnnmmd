@@ -16,7 +16,7 @@ class SetDir:
     return {
       "required": {
         "keymmd": ("STRING", {"default": "", "forceInput": True}),
-        "target": ("STRING", {"default": "/opt/strage/sample_001.bin"}),
+        "target": ("STRING", {"default": "/opt/vol000/sample_001.bin"}),
       },
     }
   RETURN_TYPES = ("STRING",)
@@ -61,7 +61,7 @@ class SetDis:
     return {
       "required": {
         "keymmd": ("STRING", {"default": "", "forceInput": True}),
-        "folder": ("STRING", {"default": "/opt/strage"}),
+        "folder": ("STRING", {"default": "/opt/vol000"}),
         "extdat": ("STRING", {"default": ".txt"}),
       },
     }
